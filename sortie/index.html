@@ -141,7 +141,9 @@ function render() {
   $("kicker").textContent = `${o.host || "Quelqu'un"} propose à ${o.band}`;
   $("title").textContent = o.title;
   $("when").textContent = when(o.starts_at);
-  $("detail").textContent = o.detail || "";
+  // Anciennes sorties à un plan : le lieu ou le détail était écrit à la main dans le premier plan
+  const legacy = single && !o.detail && !o.place && o.options.length ? o.options[0].label : "";
+  $("detail").textContent = o.detail || (legacy ? "📍 " + legacy : "");
   if (o.place) {
     $("place").classList.remove("hide");
     $("pname").textContent = o.place.name;
@@ -164,7 +166,7 @@ function render() {
     $("who").innerHTML = groups.map(([k, label]) => {
       const names = o.answers.filter(a => a.answer === k).map(a => a.name);
       return names.length ? `<div><b>${label} · ${names.length}</b><br><span>${names.map(esc).join(", ")}</span></div>` : "";
-    }).join("");
+    }).join("") + total();
   } else {
     $("ask").textContent = closed ? "Le plan choisi" : "Vote pour ton plan";
     $("plans").classList.remove("hide");
@@ -181,7 +183,17 @@ function render() {
       </button>`).join("");
     document.querySelectorAll("#plans .opt").forEach(b => b.onclick = () => vote(b.dataset.id));
     if (closed) $("name").classList.add("hide");
+    $("who").innerHTML = total();
   }
+}
+
+// Le total : les membres de la bande qui n'ont pas encore répondu (les invités par lien ne se comptent pas d'avance)
+function total() {
+  const o = data, m = o.members || 0, p = o.pending || 0, band = esc(o.band);
+  if (m <= 1) return "";
+  const line = p === 0 ? `Toute la bande a répondu ✅ (${m} membres)`
+             : `${p} membre${p > 1 ? "s" : ""} de ${band} sur ${m} ${p > 1 ? "n'ont" : "n'a"} pas encore répondu`;
+  return `<div><span>${line}</span></div>`;
 }
 
 function esc(s) { return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }

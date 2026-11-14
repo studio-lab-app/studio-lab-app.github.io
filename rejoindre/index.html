@@ -38,6 +38,12 @@ main { max-width: 460px; min-height: 100vh; margin: 0 auto; display: flex; flex-
 .kicker { margin: 18px 0 4px; color: var(--muted); font-size: 16px; font-weight: 500; }
 h1 { margin: 0; font-size: 42px; line-height: 1.02; font-weight: 800; }
 .meta { margin-top: 10px; color: var(--muted); font-size: 15px; font-weight: 500; }
+.crew { display: flex; align-items: center; gap: 10px; margin-top: 12px; }
+.crew .dots { display: flex; }
+.crew .dots b { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-size: 14px; font-weight: 700;
+  border: 2px solid var(--bg); margin-left: -8px; }
+.crew .dots b:first-child { margin-left: 0; }
+.crew span { color: var(--muted); font-size: 15px; font-weight: 500; }
 .points { margin: 24px 0 26px; padding: 0; list-style: none; display: grid; gap: 12px; }
 .points li { display: flex; gap: 12px; align-items: center; font-size: 15.5px; }
 .points b { width: 36px; height: 36px; flex: none; border-radius: 12px; background: var(--soft); display: grid; place-items: center; font-size: 18px; }
@@ -58,7 +64,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.02; font-weight: 800; }
     <div class="emoji" id="emoji">🥂</div>
     <p class="kicker" id="kicker"><span class="skeleton">Quelqu'un t'invite dans</span></p>
     <h1 class="d" id="band"><span class="skeleton">La bande</span></h1>
-    <p class="meta" id="meta"></p>
+    <div class="crew"><div class="dots" id="dots"></div><span id="meta"></span></div>
 
     <ul class="points">
       <li><b>🗳️</b>Proposez un plan ou votez entre plusieurs, en 10 secondes</li>
@@ -88,6 +94,7 @@ const params = new URLSearchParams(location.search);
 const token = (params.get("c") || location.hash.slice(1) || "").replace(/[^a-z0-9]/gi, "").toLowerCase();
 const $ = id => document.getElementById(id);
 
+function esc(s) { return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
 function fail() { $("ok").classList.add("hide"); $("ko").classList.remove("hide"); }
 
 if (token.length < 16) fail();
@@ -103,7 +110,14 @@ else {
     $("emoji").textContent = EMOJI[i.kind] || "🥂";
     $("kicker").textContent = (i.inviter || "Un ami") + " t'invite dans";
     $("band").textContent = i.band;
-    $("meta").textContent = i.members > 1 ? i.members + " membres t'attendent" : "Tu seras parmi les premiers";
+    // Qui est déjà dedans : prénoms seulement (5 au plus), l'invitant en premier
+    const names = i.names || [], shown = names.slice(0, 3), others = i.members - shown.length;
+    const colors = ["#FF8A3D", "#FF4D6D", "#9B4DFF", "#2BB673", "#3D8BFF", "#E0A400"];
+    const color = n => colors[[...n].reduce((a, c) => a + c.codePointAt(0), 0) % colors.length];
+    $("dots").innerHTML = names.slice(0, 5).map(n => `<b style="background:${color(n)}">${esc(n.charAt(0).toUpperCase())}</b>`).join("");
+    $("meta").textContent = i.members <= 1
+      ? `${shown[0] || "Ton ami"} t'attend, tu seras parmi les premiers`
+      : shown.join(", ").replace(/, ([^,]*)$/, others > 0 ? ", $1" : " et $1") + (others > 0 ? ` et ${others} autre${others > 1 ? "s" : ""}` : "") + " sont déjà dedans";
     document.title = (i.inviter || "Un ami") + " t'invite dans « " + i.band + " » · Sorties";
   })
   .catch(fail);
