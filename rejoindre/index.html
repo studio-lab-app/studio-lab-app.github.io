@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tu es invité dans la bande · Sorties</title>
+<meta name="description" content="Touche le lien pour rejoindre tes amis et organiser vos sorties.">
+<!-- Aperçu dans WhatsApp, iMessage, Telegram… (adresse complète remplie à la mise en ligne) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sorties">
+<meta property="og:title" content="Tu es invité dans la bande 🎉">
+<meta property="og:description" content="Touche le lien pour rejoindre tes amis et organiser vos sorties.">
+<meta property="og:image" content="https://studio-lab-app.github.io/apercu.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="noindex">
+<style>
+@font-face { font-family: "Bricolage"; src: url(../fonts/BricolageGrotesque.ttf); font-weight: 200 800; font-display: swap; }
+:root { --bg: #FFF5EC; --card: #FFFFFF; --ink: #1C1220; --muted: #8D8090; --line: #F2E3D6; --soft: #F6EADF;
+        --accent: #FF4D6D; --sun: linear-gradient(120deg, #FFA63D, #FF4D6D 55%, #9B4DFF); }
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #0D0A12; --card: #1A1520; --ink: #F6F1F8; --muted: #9C93A3; --line: #2A2330; --soft: #241D2B; --accent: #FF5C7C; }
+}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { margin: 0; background: var(--bg); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif; }
+.d { font-family: "Bricolage", Georgia, sans-serif; letter-spacing: -0.03em; }
+main { max-width: 460px; min-height: 100vh; margin: 0 auto; display: flex; flex-direction: column; }
+.hero { position: relative; height: 300px; background: #241D2B url(../apercu-photo.jpg) center/cover; }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(0,0,0,.15), rgba(0,0,0,.05) 40%, var(--bg)); }
+.logo { position: absolute; z-index: 1; top: calc(18px + env(safe-area-inset-top)); left: 20px; display: flex; align-items: center; gap: 8px;
+  color: #fff; font-size: 26px; font-weight: 800; }
+.logo i { width: 20px; height: 20px; border-radius: 50%; background: var(--sun); display: block; }
+.body { padding: 0 22px 32px; margin-top: -70px; position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; }
+.emoji { width: 76px; height: 76px; border-radius: 24px; background: var(--card); display: grid; place-items: center; font-size: 40px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.12); }
+.kicker { margin: 18px 0 4px; color: var(--muted); font-size: 16px; font-weight: 500; }
+h1 { margin: 0; font-size: 42px; line-height: 1.02; font-weight: 800; }
+.meta { margin-top: 10px; color: var(--muted); font-size: 15px; font-weight: 500; }
+.points { margin: 24px 0 26px; padding: 0; list-style: none; display: grid; gap: 12px; }
+.points li { display: flex; gap: 12px; align-items: center; font-size: 15.5px; }
+.points b { width: 36px; height: 36px; flex: none; border-radius: 12px; background: var(--soft); display: grid; place-items: center; font-size: 18px; }
+.btn { display: flex; align-items: center; justify-content: center; min-height: 56px; border-radius: 999px; background: var(--sun);
+  color: #fff; font-weight: 700; font-size: 17px; text-decoration: none; }
+.small { margin-top: 14px; text-align: center; color: var(--muted); font-size: 13.5px; line-height: 1.45; }
+.small a { color: var(--accent); }
+.error h1 { font-size: 32px; }
+.hide { display: none !important; }
+.skeleton { color: transparent; background: var(--soft); border-radius: 10px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="hero"><div class="logo d"><i></i>sorties</div></div>
+
+  <div class="body" id="ok">
+    <div class="emoji" id="emoji">🥂</div>
+    <p class="kicker" id="kicker"><span class="skeleton">Quelqu'un t'invite dans</span></p>
+    <h1 class="d" id="band"><span class="skeleton">La bande</span></h1>
+    <p class="meta" id="meta"></p>
+
+    <ul class="points">
+      <li><b>🗳️</b>Proposez un plan ou votez entre plusieurs, en 10 secondes</li>
+      <li><b>💬</b>Tout se décide au même endroit, sans noyer le groupe</li>
+      <li><b>🏠</b>« Je suis là », « Bien rentré » : on veille les uns sur les autres</li>
+    </ul>
+
+    <a class="btn" id="open" href="#">Rejoindre la bande</a>
+    <p class="small">L'app est en test privé pour l'instant.<br>Si rien ne s'ouvre, demande à <span id="who">celui qui t'invite</span> de t'ajouter au test.</p>
+  </div>
+
+  <div class="body error hide" id="ko">
+    <div class="emoji">⏳</div>
+    <p class="kicker">Oups</p>
+    <h1 class="d">Ce lien n'est plus valable</h1>
+    <p class="meta">Les liens d'invitation durent 14 jours. Demande un nouveau lien à la personne qui t'a invité.</p>
+  </div>
+</main>
+
+<script>
+// Seule la clé PUBLIQUE est ici : elle n'ouvre que la fonction invite_info (bande, prénom de l'invitant, nombre de membres).
+const SUPABASE = "https://bjisfgctqhpyttuugwpy.supabase.co";
+const KEY = "sb_publishable_IsHpDsR5AxialEX49HvbEw_gaTUX8NP";
+const EMOJI = { amis: "🥂", collegues: "💼", sport: "⚽️", famille: "🏡", voyage: "✈️" };
+
+const params = new URLSearchParams(location.search);
+const token = (params.get("c") || location.hash.slice(1) || "").replace(/[^a-z0-9]/gi, "").toLowerCase();
+const $ = id => document.getElementById(id);
+
+function fail() { $("ok").classList.add("hide"); $("ko").classList.remove("hide"); }
+
+if (token.length < 16) fail();
+else {
+  $("open").href = "sorties://rejoindre/" + token;
+  fetch(SUPABASE + "/rest/v1/rpc/invite_info", {
+    method: "POST",
+    headers: { apikey: KEY, "Content-Type": "application/json" },
+    body: JSON.stringify({ invite_token: token })
+  })
+  .then(r => r.ok ? r.json() : Promise.reject(r.status))
+  .then(i => {
+    $("emoji").textContent = EMOJI[i.kind] || "🥂";
+    $("kicker").textContent = (i.inviter || "Un ami") + " t'invite dans";
+    $("band").textContent = i.band;
+    $("meta").textContent = i.members > 1 ? i.members + " membres t'attendent" : "Tu seras parmi les premiers";
+    $("who").textContent = i.inviter || "celui qui t'invite";
+    document.title = (i.inviter || "Un ami") + " t'invite dans « " + i.band + " » · Sorties";
+  })
+  .catch(fail);
+}
+</script>
+</body>
+</html>
