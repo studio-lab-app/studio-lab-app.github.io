@@ -67,7 +67,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.02; font-weight: 800; }
     </ul>
 
     <a class="btn" id="open" href="#">Rejoindre la bande</a>
-    <p class="small">L'app est en test privé pour l'instant.<br>Si rien ne s'ouvre, demande à <span id="who">celui qui t'invite</span> de t'ajouter au test.</p>
+    <p class="small">L'app est en test privé pour l'instant.<br>Si rien ne s'ouvre, demande à Studio Lab de t'ajouter au test.</p>
   </div>
 
   <div class="body error hide" id="ko">
@@ -104,7 +104,6 @@ else {
     $("kicker").textContent = (i.inviter || "Un ami") + " t'invite dans";
     $("band").textContent = i.band;
     $("meta").textContent = i.members > 1 ? i.members + " membres t'attendent" : "Tu seras parmi les premiers";
-    $("who").textContent = i.inviter || "celui qui t'invite";
     document.title = (i.inviter || "Un ami") + " t'invite dans « " + i.band + " » · Sorties";
   })
   .catch(fail);
