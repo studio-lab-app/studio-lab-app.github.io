@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>On sort ? · Sorties</title>
+<meta name="description" content="Dis si tu viens en un geste, sans rien installer.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sorties">
+<meta property="og:title" content="On sort ? Dis si tu viens 👇">
+<meta property="og:description" content="Un geste, sans rien installer.">
+<meta property="og:image" content="https://studio-lab-app.github.io/apercu-sortie.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="noindex">
+<style>
+@font-face { font-family: "Bricolage"; src: url(../fonts/BricolageGrotesque.ttf); font-weight: 200 800; font-display: swap; }
+:root { --bg: #FFF5EC; --card: #FFFFFF; --ink: #1C1220; --muted: #8D8090; --line: #F2E3D6; --soft: #F6EADF;
+        --accent: #FF4D6D; --ok: #2BB673; --sun: linear-gradient(120deg, #FFA63D, #FF4D6D 55%, #9B4DFF); }
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #0D0A12; --card: #1A1520; --ink: #F6F1F8; --muted: #9C93A3; --line: #2A2330; --soft: #241D2B; --accent: #FF5C7C; }
+}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { margin: 0; background: var(--bg); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif; }
+.d { font-family: "Bricolage", Georgia, sans-serif; letter-spacing: -0.03em; }
+button, input { font: inherit; color: inherit; }
+button { border: 0; background: none; cursor: pointer; }
+main { max-width: 460px; min-height: 100vh; margin: 0 auto; padding: calc(18px + env(safe-area-inset-top)) 20px 40px; }
+.logo { display: flex; align-items: center; gap: 8px; font-size: 22px; font-weight: 800; margin-bottom: 22px; }
+.logo i { width: 18px; height: 18px; border-radius: 50%; background: var(--sun); display: block; }
+.kicker { margin: 0 0 4px; color: var(--muted); font-size: 15px; font-weight: 500; }
+h1 { margin: 0; font-size: 40px; line-height: 1.02; font-weight: 800; }
+.when { margin: 10px 0 0; font-size: 17px; font-weight: 600; }
+.detail { margin: 6px 0 0; color: var(--muted); font-size: 15px; }
+.tag { display: inline-block; margin-bottom: 12px; padding: 5px 11px; border-radius: 99px; font-size: 12.5px; font-weight: 700;
+  color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); }
+.tag.ok { color: var(--ok); background: color-mix(in srgb, var(--ok) 14%, transparent); }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 16px; }
+.place { margin-top: 18px; display: flex; align-items: center; gap: 12px; }
+.place .pin { width: 42px; height: 42px; border-radius: 14px; background: var(--soft); display: grid; place-items: center; font-size: 20px; flex: none; }
+.place b { display: block; font-size: 16px; }
+.place span { color: var(--muted); font-size: 13.5px; }
+.place a { margin-left: auto; flex: none; color: #fff; background: var(--sun); border-radius: 99px; padding: 9px 14px; font-size: 13.5px; font-weight: 700; text-decoration: none; }
+h2 { margin: 28px 0 12px; font-size: 21px; font-weight: 800; }
+.name { width: 100%; min-height: 54px; border-radius: 16px; border: 1px solid var(--line); background: var(--card); padding: 0 18px; font-size: 17px; font-weight: 500; outline: none; }
+.name:focus { border-color: var(--accent); }
+.answers { margin-top: 10px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.answers button { min-height: 76px; border-radius: 18px; background: var(--card); border: 1px solid var(--line); font-weight: 700; font-size: 14.5px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; }
+.answers button span { font-size: 22px; }
+.answers button.on { background: var(--sun); color: #fff; border-color: transparent; }
+.opt { width: 100%; text-align: left; margin-bottom: 10px; display: block; }
+.opt.on { border: 2px solid var(--accent); padding: 15px; }
+.opt b { font-size: 18px; display: block; }
+.opt small { color: var(--muted); font-size: 13.5px; display: block; margin-top: 2px; }
+.bar { height: 8px; border-radius: 99px; background: var(--soft); margin-top: 10px; overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--sun); border-radius: 99px; width: 0; transition: width .4s; }
+.opt .n { color: var(--muted); font-size: 13px; margin-top: 6px; }
+.who { margin-top: 18px; display: grid; gap: 10px; }
+.who div { font-size: 14.5px; } .who b { font-weight: 700; } .who span { color: var(--muted); }
+.msg { margin-top: 14px; font-size: 15px; font-weight: 600; min-height: 20px; }
+.msg.err { color: #D93A50; }
+.foot { margin-top: 34px; text-align: center; color: var(--muted); font-size: 13px; line-height: 1.5; }
+.hide { display: none !important; }
+.err-page { padding-top: 40px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="logo d"><i></i>sorties</div>
+
+  <div id="ok" class="hide">
+    <span class="tag" id="tag"></span>
+    <p class="kicker" id="kicker"></p>
+    <h1 class="d" id="title"></h1>
+    <p class="when" id="when"></p>
+    <p class="detail" id="detail"></p>
+    <div class="card place hide" id="place">
+      <div class="pin">📍</div>
+      <div><b id="pname"></b><span id="paddr"></span></div>
+      <a id="route" target="_blank" rel="noopener">Itinéraire</a>
+    </div>
+
+    <h2 class="d" id="ask"></h2>
+    <input class="name" id="name" placeholder="Ton prénom" maxlength="40" autocomplete="given-name">
+
+    <div id="single" class="hide">
+      <div class="answers">
+        <button data-a="yes"><span>👍</span>Je viens</button>
+        <button data-a="maybe"><span>🤔</span>Peut-être</button>
+        <button data-a="no"><span>🙅</span>Non</button>
+      </div>
+    </div>
+    <div id="plans" class="hide"></div>
+
+    <p class="msg" id="msg"></p>
+    <div class="who" id="who"></div>
+
+    <p class="foot">Pas besoin d'installer l'app pour répondre.<br>L'app Sorties est en test privé.</p>
+  </div>
+
+  <div id="ko" class="hide err-page">
+    <p class="kicker">Oups</p>
+    <h1 class="d">Cette sortie n'existe plus</h1>
+    <p class="detail">Elle a peut-être été annulée. Demande un nouveau lien à celui qui l'a proposée.</p>
+  </div>
+</main>
+
+<script>
+// Seule la clé PUBLIQUE est ici : elle n'ouvre que les fonctions de la page invité (rien d'autre dans la base).
+const SUPABASE = "https://bjisfgctqhpyttuugwpy.supabase.co";
+const KEY = "sb_publishable_IsHpDsR5AxialEX49HvbEw_gaTUX8NP";
+const $ = id => document.getElementById(id);
+const share = (new URLSearchParams(location.search).get("s") || "").replace(/[^a-z0-9]/gi, "").toLowerCase();
+let data = null, mine = null;
+
+const rpc = (fn, body) => fetch(`${SUPABASE}/rest/v1/rpc/${fn}`, {
+  method: "POST", headers: { apikey: KEY, "Content-Type": "application/json" }, body: JSON.stringify(body)
+}).then(async r => { if (!r.ok) throw new Error(await r.text()); const t = await r.text(); return t ? JSON.parse(t) : null; });
+
+const store = { get: k => { try { return localStorage.getItem(k) } catch { return null } },
+                set: (k, v) => { try { localStorage.setItem(k, v) } catch {} } };
+$("name").value = store.get("prenom") || "";
+
+function when(iso) {
+  if (!iso) return "";
+  const d = new Date(iso);
+  const s = d.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" }) + " à " +
+            d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" }).replace(":", "h").replace("h00", "h");
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+function render() {
+  const o = data, single = o.kind === "precise";
+  $("ok").classList.remove("hide");
+  const closed = o.status !== "open";
+  $("tag").textContent = single ? (o.status === "booked" ? "C'est confirmé" : "Qui vient ?") : (closed ? "C'est décidé" : "Vote en cours");
+  $("tag").className = "tag" + (closed ? " ok" : "");
+  $("kicker").textContent = `${o.host || "Quelqu'un"} propose à ${o.band}`;
+  $("title").textContent = o.title;
+  $("when").textContent = when(o.starts_at);
+  $("detail").textContent = o.detail || "";
+  if (o.place) {
+    $("place").classList.remove("hide");
+    $("pname").textContent = o.place.name;
+    $("paddr").textContent = o.place.address || "";
+    const q = encodeURIComponent(`${o.place.name} ${o.place.address || ""}`);
+    $("route").href = /iPhone|iPad|Mac/.test(navigator.userAgent)
+      ? `https://maps.apple.com/?q=${encodeURIComponent(o.place.name)}&ll=${o.place.lat},${o.place.lng}`
+      : `https://www.google.com/maps/search/?api=1&query=${q}`;
+  }
+  document.title = `${o.title} · ${o.band}`;
+
+  if (single) {
+    $("ask").textContent = "Tu viens ?";
+    $("single").classList.remove("hide");
+    const me = ($("name").value || "").trim().toLowerCase();
+    const myAnswer = me && o.answers.find(a => a.guest && a.name.trim().toLowerCase() === me);
+    mine = myAnswer ? myAnswer.answer : mine;
+    document.querySelectorAll("#single button").forEach(b => b.classList.toggle("on", b.dataset.a === mine));
+    const groups = [["yes", "Viennent"], ["maybe", "Peut-être"], ["no", "Ne viennent pas"]];
+    $("who").innerHTML = groups.map(([k, label]) => {
+      const names = o.answers.filter(a => a.answer === k).map(a => a.name);
+      return names.length ? `<div><b>${label} · ${names.length}</b><br><span>${names.map(esc).join(", ")}</span></div>` : "";
+    }).join("");
+  } else {
+    $("ask").textContent = closed ? "Le plan choisi" : "Vote pour ton plan";
+    $("plans").classList.remove("hide");
+    const total = Math.max(1, o.options.reduce((s, x) => s + x.votes, 0));
+    const best = Math.max(...o.options.map(x => x.votes));
+    const list = closed ? o.options.filter(x => x.votes === best) : o.options;
+    $("plans").innerHTML = list.map(x => `
+      <button class="card opt ${mine === x.id ? "on" : ""}" data-id="${x.id}" ${closed ? "disabled" : ""}>
+        <b>${esc(x.label)}</b>
+        ${x.place ? `<small>📍 ${esc(x.place)}${x.address ? " · " + esc(x.address) : ""}</small>` : ""}
+        ${x.detail ? `<small>${esc(x.detail)}</small>` : ""}
+        <div class="bar"><i style="width:${Math.round(100 * x.votes / total)}%"></i></div>
+        <div class="n">${x.votes} vote${x.votes > 1 ? "s" : ""}</div>
+      </button>`).join("");
+    document.querySelectorAll("#plans .opt").forEach(b => b.onclick = () => vote(b.dataset.id));
+    if (closed) $("name").classList.add("hide");
+  }
+}
+
+function esc(s) { return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
+
+function needName() {
+  const n = $("name").value.trim();
+  if (!n) { $("msg").textContent = "Écris d'abord ton prénom 🙂"; $("msg").className = "msg err"; $("name").focus(); return null; }
+  store.set("prenom", n);
+  return n;
+}
+
+async function answer(a) {
+  const n = needName(); if (!n) return;
+  mine = a; render();
+  try {
+    await rpc("outing_guest_respond", { share, name: n, answer: a });
+    $("msg").className = "msg";
+    $("msg").textContent = a === "yes" ? `C'est noté, ${n} ! À tout à l'heure 🎉` : a === "maybe" ? `Noté, ${n}. Tu peux changer d'avis ici.` : `Dommage, ${n}. La prochaine fois !`;
+    await load();
+  } catch (e) { $("msg").className = "msg err"; $("msg").textContent = "Impossible d'enregistrer. Réessaie."; }
+}
+
+async function vote(id) {
+  const n = needName(); if (!n) return;
+  mine = id; render();
+  try {
+    await rpc("outing_guest_vote", { share, option: id, name: n });
+    $("msg").className = "msg"; $("msg").textContent = `C'est noté, ${n} ! Tu peux changer d'avis tant que le vote est ouvert.`;
+    await load();
+  } catch (e) { $("msg").className = "msg err"; $("msg").textContent = "Le vote est fermé ou impossible. Réessaie."; }
+}
+
+document.querySelectorAll("#single button").forEach(b => b.onclick = () => answer(b.dataset.a));
+$("name").addEventListener("input", () => { $("msg").textContent = ""; });
+
+async function load() {
+  data = await rpc("outing_public", { share });
+  render();
+}
+if (share.length < 16) $("ko").classList.remove("hide");
+else load().catch(() => $("ko").classList.remove("hide"));
+</script>
+</body>
+</html>
