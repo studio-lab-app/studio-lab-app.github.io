@@ -77,10 +77,10 @@ h1 { margin: 0; font-size: 42px; line-height: 1.02; font-weight: 800; }
   </div>
 
   <div class="body error hide" id="ko">
-    <div class="emoji">⏳</div>
+    <div class="emoji" id="koEmoji">⏳</div>
     <p class="kicker">Oups</p>
-    <h1 class="d">Ce lien n'est plus valable</h1>
-    <p class="meta">Les liens d'invitation durent 14 jours. Demande un nouveau lien à la personne qui t'a invité.</p>
+    <h1 class="d" id="koTitle">Ce lien n'est plus valable</h1>
+    <p class="meta" id="koText">Les liens d'invitation durent 14 jours. Demande un nouveau lien à la personne qui t'a invité.</p>
   </div>
 </main>
 
@@ -95,7 +95,10 @@ const token = (params.get("c") || location.hash.slice(1) || "").replace(/[^a-z0-
 const $ = id => document.getElementById(id);
 
 function esc(s) { return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
-function fail() { $("ok").classList.add("hide"); $("ko").classList.remove("hide"); }
+function fail(emoji, title, text) {
+  $("ok").classList.add("hide"); $("ko").classList.remove("hide");
+  if (title) { $("koEmoji").textContent = emoji; $("koTitle").textContent = title; $("koText").textContent = text; }
+}
 
 if (token.length < 16) fail();
 else {
@@ -107,6 +110,9 @@ else {
   })
   .then(r => r.ok ? r.json() : Promise.reject(r.status))
   .then(i => {
+    // Bande fermée et limitée : 50 membres au plus ; plus d'arrivées pendant une dissolution
+    if (i.full) return fail("👥", "Cette bande est complète", "Une bande compte 50 membres au plus. Demande à la personne qui t'a invité de créer une autre bande.");
+    if (i.closing) return fail("🕊️", "Cette bande va fermer", "Son admin a lancé sa dissolution : on ne peut plus la rejoindre.");
     $("emoji").textContent = EMOJI[i.kind] || "🥂";
     $("kicker").textContent = (i.inviter || "Un ami") + " t'invite dans";
     $("band").textContent = i.band;
@@ -120,7 +126,7 @@ else {
       : shown.join(", ").replace(/, ([^,]*)$/, others > 0 ? ", $1" : " et $1") + (others > 0 ? ` et ${others} autre${others > 1 ? "s" : ""}` : "") + " sont déjà dedans";
     document.title = (i.inviter || "Un ami") + " t'invite dans « " + i.band + " » · Sorties";
   })
-  .catch(fail);
+  .catch(() => fail());
 }
 </script>
 </body>
