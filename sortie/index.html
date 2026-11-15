@@ -172,7 +172,8 @@ function render() {
     $("plans").classList.remove("hide");
     const total = Math.max(1, o.options.reduce((s, x) => s + x.votes, 0));
     const best = Math.max(...o.options.map(x => x.votes));
-    const list = closed ? o.options.filter(x => x.votes === best) : o.options;
+    // Clos : le plan retenu par l'organisateur (égalité comprise), sinon le plan en tête
+    const list = closed ? (o.chosen ? o.options.filter(x => x.id === o.chosen) : o.options.filter(x => x.votes === best)) : o.options;
     $("plans").innerHTML = list.map(x => `
       <button class="card opt ${mine === x.id ? "on" : ""}" data-id="${x.id}" ${closed ? "disabled" : ""}>
         <b>${esc(x.label)}</b>
