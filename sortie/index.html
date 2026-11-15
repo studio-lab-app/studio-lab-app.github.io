@@ -136,8 +136,8 @@ function render() {
   const o = data, single = o.kind === "precise";
   $("ok").classList.remove("hide");
   const closed = o.status !== "open";
-  $("tag").textContent = o.reserved ? "C'est réservé"
-    : single ? (o.status === "booked" ? "C'est confirmé" : "Qui vient ?") : (closed ? "C'est décidé" : "Vote en cours");
+  // Les étapes, comme dans l'app : Qui vient ? / Vote en cours → Confirmée → Réservée
+  $("tag").textContent = o.reserved ? "Réservée" : closed ? "Confirmée" : (single ? "Qui vient ?" : "Vote en cours");
   $("tag").className = "tag" + (closed ? " ok" : "");
   $("kicker").textContent = `${o.host || "Quelqu'un"} propose à ${o.band}`;
   $("title").textContent = o.title;
