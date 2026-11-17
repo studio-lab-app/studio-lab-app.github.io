@@ -1,0 +1,14 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["LQ93VPDWCH.lab.studio.sorties"],
+        "components": [
+          { "/": "/rejoindre/*", "comment": "Invitations dans une bande ou un voyage : ouvrent l'app si elle est installée" }
+        ],
+        "appID": "LQ93VPDWCH.lab.studio.sorties",
+        "paths": ["/rejoindre/*"]
+      }
+    ]
+  }
+}
