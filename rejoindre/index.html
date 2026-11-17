@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Tu es invité dans la bande · Sorties</title>
+<title>Tu es invité dans la bande · Youhou</title>
 <meta name="description" content="Touche le lien pour rejoindre tes amis et organiser vos sorties.">
 <!-- Aperçu dans WhatsApp, iMessage, Telegram… (adresse complète remplie à la mise en ligne) -->
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Sorties">
+<meta property="og:site_name" content="Youhou">
 <meta property="og:title" content="Tu es invité dans la bande 🎉">
 <meta property="og:description" content="Touche le lien pour rejoindre tes amis et organiser vos sorties.">
 <meta property="og:image" content="https://studio-lab-app.github.io/apercu.jpg">
@@ -18,7 +18,7 @@
 <style>
 @font-face { font-family: "Bricolage"; src: url(../fonts/BricolageGrotesque.ttf); font-weight: 200 800; font-display: swap; }
 :root { --bg: #FFF5EC; --card: #FFFFFF; --ink: #1C1220; --muted: #8D8090; --line: #F2E3D6; --soft: #F6EADF;
-        --accent: #FF4D6D; --sun: linear-gradient(120deg, #FFA63D, #FF4D6D 55%, #9B4DFF); }
+        --accent: #FF4D6D; --sun: linear-gradient(100deg, #FFC24A, #FF7A3D 55%, #F0436A); }
 @media (prefers-color-scheme: dark) {
   :root { --bg: #0D0A12; --card: #1A1520; --ink: #F6F1F8; --muted: #9C93A3; --line: #2A2330; --soft: #241D2B; --accent: #FF5C7C; }
 }
@@ -29,9 +29,9 @@ html, body { margin: 0; background: var(--bg); color: var(--ink);
 main { max-width: 460px; min-height: 100vh; margin: 0 auto; display: flex; flex-direction: column; }
 .hero { position: relative; height: 300px; background: #241D2B url(../apercu-photo.jpg) center/cover; }
 .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(0,0,0,.15), rgba(0,0,0,.05) 40%, var(--bg)); }
-.logo { position: absolute; z-index: 1; top: calc(18px + env(safe-area-inset-top)); left: 20px; display: flex; align-items: center; gap: 8px;
+.logo { position: absolute; z-index: 1; top: calc(18px + env(safe-area-inset-top)); left: 20px; display: flex; align-items: center; gap: 1px; letter-spacing: -0.03em;
   color: #fff; font-size: 26px; font-weight: 800; }
-.logo i { width: 20px; height: 20px; border-radius: 50%; background: var(--sun); display: block; }
+.logo i { width: 12px; height: 12px; margin-top: 4px; border-radius: 50%; background: var(--sun); display: block; }
 .body { padding: 0 22px 32px; margin-top: -70px; position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; }
 .emoji { width: 76px; height: 76px; border-radius: 24px; background: var(--card); display: grid; place-items: center; font-size: 40px;
   box-shadow: 0 8px 24px rgba(0,0,0,.12); }
@@ -48,7 +48,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.02; font-weight: 800; }
 .points li { display: flex; gap: 12px; align-items: center; font-size: 15.5px; }
 .points b { width: 36px; height: 36px; flex: none; border-radius: 12px; background: var(--soft); display: grid; place-items: center; font-size: 18px; }
 .btn { display: flex; align-items: center; justify-content: center; min-height: 56px; border-radius: 999px; background: var(--sun);
-  color: #fff; font-weight: 700; font-size: 17px; text-decoration: none; }
+  color: #1B1B3A; font-weight: 700; font-size: 17px; text-decoration: none; }
 .small { margin-top: 14px; text-align: center; color: var(--muted); font-size: 13.5px; line-height: 1.45; }
 .small a { color: var(--accent); }
 .error h1 { font-size: 32px; }
@@ -58,7 +58,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.02; font-weight: 800; }
 </head>
 <body>
 <main>
-  <div class="hero"><div class="logo d"><i></i>sorties</div></div>
+  <div class="hero"><div class="logo d" aria-label="Youhou">youh<i></i>u</div></div>
 
   <div class="body" id="ok">
     <div class="emoji" id="emoji">🥂</div>
@@ -124,7 +124,7 @@ else {
     $("meta").textContent = i.members <= 1
       ? `${shown[0] || "Ton ami"} t'attend, tu seras parmi les premiers`
       : shown.join(", ").replace(/, ([^,]*)$/, others > 0 ? ", $1" : " et $1") + (others > 0 ? ` et ${others} autre${others > 1 ? "s" : ""}` : "") + " sont déjà dedans";
-    document.title = (i.inviter || "Un ami") + " t'invite dans « " + i.band + " » · Sorties";
+    document.title = (i.inviter || "Un ami") + " t'invite dans « " + i.band + " » · Youhou";
   })
   .catch(() => fail());
 }

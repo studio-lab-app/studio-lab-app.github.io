@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>On sort ? · Sorties</title>
+<title>On sort ? · Youhou</title>
 <meta name="description" content="Dis si tu viens en un geste, sans rien installer.">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Sorties">
+<meta property="og:site_name" content="Youhou">
 <meta property="og:title" content="On sort ? Dis si tu viens 👇">
 <meta property="og:description" content="Un geste, sans rien installer.">
 <meta property="og:image" content="https://studio-lab-app.github.io/apercu-sortie.jpg">
@@ -17,7 +17,7 @@
 <style>
 @font-face { font-family: "Bricolage"; src: url(../fonts/BricolageGrotesque.ttf); font-weight: 200 800; font-display: swap; }
 :root { --bg: #FFF5EC; --card: #FFFFFF; --ink: #1C1220; --muted: #8D8090; --line: #F2E3D6; --soft: #F6EADF;
-        --accent: #FF4D6D; --ok: #2BB673; --sun: linear-gradient(120deg, #FFA63D, #FF4D6D 55%, #9B4DFF); }
+        --accent: #FF4D6D; --ok: #2BB673; --sun: linear-gradient(100deg, #FFC24A, #FF7A3D 55%, #F0436A); }
 @media (prefers-color-scheme: dark) {
   :root { --bg: #0D0A12; --card: #1A1520; --ink: #F6F1F8; --muted: #9C93A3; --line: #2A2330; --soft: #241D2B; --accent: #FF5C7C; }
 }
@@ -28,8 +28,8 @@ html, body { margin: 0; background: var(--bg); color: var(--ink);
 button, input { font: inherit; color: inherit; }
 button { border: 0; background: none; cursor: pointer; }
 main { max-width: 460px; min-height: 100vh; margin: 0 auto; padding: calc(18px + env(safe-area-inset-top)) 20px 40px; }
-.logo { display: flex; align-items: center; gap: 8px; font-size: 22px; font-weight: 800; margin-bottom: 22px; }
-.logo i { width: 18px; height: 18px; border-radius: 50%; background: var(--sun); display: block; }
+.logo { display: flex; align-items: center; gap: 1px; letter-spacing: -0.03em; font-size: 22px; font-weight: 800; margin-bottom: 22px; }
+.logo i { width: 11px; height: 11px; margin-top: 4px; border-radius: 50%; background: var(--sun); display: block; }
 .kicker { margin: 0 0 4px; color: var(--muted); font-size: 15px; font-weight: 500; }
 h1 { margin: 0; font-size: 40px; line-height: 1.02; font-weight: 800; }
 .when { margin: 10px 0 0; font-size: 17px; font-weight: 600; }
@@ -42,7 +42,7 @@ h1 { margin: 0; font-size: 40px; line-height: 1.02; font-weight: 800; }
 .place .pin { width: 42px; height: 42px; border-radius: 14px; background: var(--soft); display: grid; place-items: center; font-size: 20px; flex: none; }
 .place b { display: block; font-size: 16px; }
 .place span { color: var(--muted); font-size: 13.5px; }
-.place a { margin-left: auto; flex: none; color: #fff; background: var(--sun); border-radius: 99px; padding: 9px 14px; font-size: 13.5px; font-weight: 700; text-decoration: none; }
+.place a { margin-left: auto; flex: none; color: #1B1B3A; background: var(--sun); border-radius: 99px; padding: 9px 14px; font-size: 13.5px; font-weight: 700; text-decoration: none; }
 h2 { margin: 28px 0 12px; font-size: 21px; font-weight: 800; }
 .name { width: 100%; min-height: 54px; border-radius: 16px; border: 1px solid var(--line); background: var(--card); padding: 0 18px; font-size: 17px; font-weight: 500; outline: none; }
 .name:focus { border-color: var(--accent); }
@@ -50,7 +50,7 @@ h2 { margin: 28px 0 12px; font-size: 21px; font-weight: 800; }
 .answers button { min-height: 76px; border-radius: 18px; background: var(--card); border: 1px solid var(--line); font-weight: 700; font-size: 14.5px;
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; }
 .answers button span { font-size: 22px; }
-.answers button.on { background: var(--sun); color: #fff; border-color: transparent; }
+.answers button.on { background: var(--sun); color: #1B1B3A; border-color: transparent; }
 .opt { width: 100%; text-align: left; margin-bottom: 10px; display: block; }
 .opt.on { border: 2px solid var(--accent); padding: 15px; }
 .opt b { font-size: 18px; display: block; }
@@ -69,7 +69,7 @@ h2 { margin: 28px 0 12px; font-size: 21px; font-weight: 800; }
 </head>
 <body>
 <main>
-  <div class="logo d"><i></i>sorties</div>
+  <div class="logo d" aria-label="Youhou">youh<i></i>u</div>
 
   <div id="ok" class="hide">
     <span class="tag" id="tag"></span>
@@ -98,7 +98,7 @@ h2 { margin: 28px 0 12px; font-size: 21px; font-weight: 800; }
     <p class="msg" id="msg"></p>
     <div class="who" id="who"></div>
 
-    <p class="foot">Pas besoin d'installer l'app pour répondre.<br>L'app Sorties est en test privé.</p>
+    <p class="foot">Pas besoin d'installer l'app pour répondre.<br>L'app Youhou est en test privé.</p>
   </div>
 
   <div id="ko" class="hide err-page">
