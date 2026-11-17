@@ -16,71 +16,55 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="noindex">
 <style>
+/* Version B « sobre » (validée le 17/11/2026) : comme l'écran d'invitation de l'app. Toujours en sombre. */
 @font-face { font-family: "Bricolage"; src: url(../fonts/BricolageGrotesque.ttf); font-weight: 200 800; font-display: swap; }
-:root { --bg: #FFF5EC; --card: #FFFFFF; --ink: #1C1220; --muted: #8D8090; --line: #F2E3D6; --soft: #F6EADF;
-        --accent: #FF4D6D; --sun: linear-gradient(100deg, #FFC24A, #FF7A3D 55%, #F0436A); }
-@media (prefers-color-scheme: dark) {
-  :root { --bg: #0D0A12; --card: #1A1520; --ink: #F6F1F8; --muted: #9C93A3; --line: #2A2330; --soft: #241D2B; --accent: #FF5C7C; }
-}
+:root { --bg: #0F0E2A; --ink: #FFFFFF; --muted: rgba(255,255,255,.68); --sun: linear-gradient(100deg, #FFC24A, #FF7A3D 55%, #F0436A); color-scheme: dark; }
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 html, body { margin: 0; background: var(--bg); color: var(--ink);
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif; }
-.d { font-family: "Bricolage", Georgia, sans-serif; letter-spacing: -0.03em; }
-main { max-width: 460px; min-height: 100vh; margin: 0 auto; display: flex; flex-direction: column; }
-.hero { position: relative; height: 300px; background: #241D2B url(../apercu-photo.jpg) center/cover; }
-.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(0,0,0,.15), rgba(0,0,0,.05) 40%, var(--bg)); }
-.logo { position: absolute; z-index: 1; top: calc(18px + env(safe-area-inset-top)); left: 20px; display: flex; align-items: center; gap: 1px; letter-spacing: -0.03em;
-  color: #fff; font-size: 26px; font-weight: 800; }
-.logo i { width: 12px; height: 12px; margin-top: 4px; border-radius: 50%; background: var(--sun); display: block; }
-.body { padding: 0 22px 32px; margin-top: -70px; position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; }
-.emoji { width: 76px; height: 76px; border-radius: 24px; background: var(--card); display: grid; place-items: center; font-size: 40px;
-  box-shadow: 0 8px 24px rgba(0,0,0,.12); }
-.kicker { margin: 18px 0 4px; color: var(--muted); font-size: 16px; font-weight: 500; }
-h1 { margin: 0; font-size: 42px; line-height: 1.02; font-weight: 800; }
-.meta { margin-top: 10px; color: var(--muted); font-size: 15px; font-weight: 500; }
-.crew { display: flex; align-items: center; gap: 10px; margin-top: 12px; }
-.crew .dots { display: flex; }
-.crew .dots b { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-size: 14px; font-weight: 700;
-  border: 2px solid var(--bg); margin-left: -8px; }
-.crew .dots b:first-child { margin-left: 0; }
-.crew span { color: var(--muted); font-size: 15px; font-weight: 500; }
-.points { margin: 24px 0 26px; padding: 0; list-style: none; display: grid; gap: 12px; }
-.points li { display: flex; gap: 12px; align-items: center; font-size: 15.5px; }
-.points b { width: 36px; height: 36px; flex: none; border-radius: 12px; background: var(--soft); display: grid; place-items: center; font-size: 18px; }
-.btn { display: flex; align-items: center; justify-content: center; min-height: 56px; border-radius: 999px; background: var(--sun);
-  color: #1B1B3A; font-weight: 700; font-size: 17px; text-decoration: none; }
-.small { margin-top: 14px; text-align: center; color: var(--muted); font-size: 13.5px; line-height: 1.45; }
-.small a { color: var(--accent); }
-.error h1 { font-size: 32px; }
+body::before { content: ""; position: fixed; inset: 0; pointer-events: none;
+  background: radial-gradient(circle at 50% 32%, rgba(255,122,61,.28), transparent 55%); }
+.d { font-family: "Bricolage", Georgia, sans-serif; letter-spacing: -0.035em; }
+main { position: relative; max-width: 460px; min-height: 100vh; min-height: 100dvh; margin: 0 auto; display: flex; flex-direction: column;
+  padding: calc(20px + env(safe-area-inset-top)) max(24px, env(safe-area-inset-right)) calc(26px + env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left)); }
+.logo { display: flex; align-items: center; gap: 1px; font-size: 24px; font-weight: 800; }
+.logo i { width: 11px; height: 11px; margin-top: 4px; border-radius: 50%; background: var(--sun); display: block; }
+.body { flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.mid { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 30px 0; }
+.dots { display: flex; margin-bottom: 26px; }
+.dots b { width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-size: 24px; font-weight: 700;
+  border: 3px solid var(--bg); margin-left: -18px; }
+.dots b:first-child { margin-left: 0; }
+.kicker { margin: 0; color: var(--muted); font-size: 12px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+h1 { margin: 8px 0 0; font-size: 36px; line-height: 1.04; font-weight: 800; }
+.meta { margin: 12px 0 0; color: var(--muted); font-size: 15.5px; font-weight: 500; }
+.btn { width: 100%; display: flex; align-items: center; justify-content: center; min-height: 56px; border-radius: 999px; background: var(--sun);
+  color: #1B1B3A; font-weight: 800; font-size: 17px; text-decoration: none; }
+.small { margin: 14px 0 0; color: var(--muted); font-size: 13.5px; line-height: 1.45; }
+.skeleton { color: transparent; background: rgba(255,255,255,.08); border-radius: 10px; }
 .hide { display: none !important; }
-.skeleton { color: transparent; background: var(--soft); border-radius: 10px; }
 </style>
 </head>
 <body>
 <main>
-  <div class="hero"><div class="logo d" aria-label="Youhou">youh<i></i>u</div></div>
-
+  <div class="logo d" aria-label="Youhou">youh<i></i>u</div>
   <div class="body" id="ok">
-    <div class="emoji" id="emoji">🥂</div>
-    <p class="kicker" id="kicker"><span class="skeleton">Quelqu'un t'invite dans</span></p>
-    <h1 class="d" id="band"><span class="skeleton">La bande</span></h1>
-    <div class="crew"><div class="dots" id="dots"></div><span id="meta"></span></div>
-
-    <ul class="points">
-      <li><b>🗳️</b>Proposez un plan ou votez entre plusieurs, en 10 secondes</li>
-      <li><b>💬</b>Tout se décide au même endroit, sans noyer le groupe</li>
-      <li><b>🏠</b>« Je suis là », « Bien rentré » : on veille les uns sur les autres</li>
-    </ul>
-
-    <a class="btn" id="open" href="#">Rejoindre la bande</a>
-    <p class="small">L'app est en test privé pour l'instant.<br>Si rien ne s'ouvre, demande à Studio Lab de t'ajouter au test.</p>
+    <div class="mid">
+      <div class="dots" id="dots"></div>
+      <p class="kicker">Invitation</p>
+      <h1 class="d" id="band"><span class="skeleton">Quelqu'un t'invite dans la bande</span></h1>
+      <p class="meta" id="meta"></p>
+    </div>
+    <a class="btn d" id="open" href="#">Rejoindre la bande</a>
+    <p class="small" id="note">L'app est en test privé pour l'instant.<br>Si rien ne s'ouvre, demande à la personne qui t'invite de t'ajouter au test.</p>
   </div>
-
-  <div class="body error hide" id="ko">
-    <div class="emoji" id="koEmoji">⏳</div>
-    <p class="kicker">Oups</p>
-    <h1 class="d" id="koTitle">Ce lien n'est plus valable</h1>
-    <p class="meta" id="koText">Les liens d'invitation durent 14 jours. Demande un nouveau lien à la personne qui t'a invité.</p>
+  <div class="body hide" id="ko">
+    <div class="mid">
+      <div class="dots"><b id="koEmoji" style="background:rgba(255,255,255,.08)">⏳</b></div>
+      <p class="kicker">Oups</p>
+      <h1 class="d" id="koTitle">Ce lien n'est plus valable</h1>
+      <p class="meta" id="koText">Les liens d'invitation durent 14 jours. Demande un nouveau lien à la personne qui t'a invité.</p>
+    </div>
   </div>
 </main>
 
@@ -88,7 +72,6 @@ h1 { margin: 0; font-size: 42px; line-height: 1.02; font-weight: 800; }
 // Seule la clé PUBLIQUE est ici : elle n'ouvre que la fonction invite_info (bande, prénom de l'invitant, nombre de membres).
 const SUPABASE = "https://bjisfgctqhpyttuugwpy.supabase.co";
 const KEY = "sb_publishable_IsHpDsR5AxialEX49HvbEw_gaTUX8NP";
-const EMOJI = { amis: "🥂", collegues: "💼", sport: "⚽️", famille: "🏡", voyage: "✈️" };
 
 const params = new URLSearchParams(location.search);
 const token = (params.get("c") || location.hash.slice(1) || "").replace(/[^a-z0-9]/gi, "").toLowerCase();
@@ -113,17 +96,19 @@ else {
     // Bande fermée et limitée : 50 membres au plus ; plus d'arrivées pendant une dissolution
     if (i.full) return fail("👥", "Cette bande est complète", "Une bande compte 50 membres au plus. Demande à la personne qui t'a invité de créer une autre bande.");
     if (i.closing) return fail("🕊️", "Cette bande va fermer", "Son admin a lancé sa dissolution : on ne peut plus la rejoindre.");
-    $("emoji").textContent = EMOJI[i.kind] || "🥂";
-    $("kicker").textContent = (i.inviter || "Un ami") + " t'invite dans";
-    $("band").textContent = i.band;
+    const who = i.inviter || "Un ami";
+    $("band").innerHTML = esc(who) + " t'invite<br>dans " + esc(i.band);
+    $("open").textContent = "Rejoindre " + i.band;
+    $("note").innerHTML = "L'app est en test privé pour l'instant.<br>Si rien ne s'ouvre, demande à " + esc(who) + " de t'ajouter au test.";
     // Qui est déjà dedans : prénoms seulement (5 au plus), l'invitant en premier
-    const names = i.names || [], shown = names.slice(0, 3), others = i.members - shown.length;
-    const colors = ["#FF8A3D", "#FF4D6D", "#9B4DFF", "#2BB673", "#3D8BFF", "#E0A400"];
+    const names = i.names || [], rest = names.filter(n => n !== i.inviter), shown = rest.slice(0, 2), others = i.members - 1 - shown.length;
+    const colors = ["#4F9BF5", "#3FC46B", "#9B6BF2", "#F0436A", "#F2B33D", "#22B8C7"];
     const color = n => colors[[...n].reduce((a, c) => a + c.codePointAt(0), 0) % colors.length];
-    $("dots").innerHTML = names.slice(0, 5).map(n => `<b style="background:${color(n)}">${esc(n.charAt(0).toUpperCase())}</b>`).join("");
-    $("meta").textContent = i.members <= 1
-      ? `${shown[0] || "Ton ami"} t'attend, tu seras parmi les premiers`
-      : shown.join(", ").replace(/, ([^,]*)$/, others > 0 ? ", $1" : " et $1") + (others > 0 ? ` et ${others} autre${others > 1 ? "s" : ""}` : "") + " sont déjà dedans";
+    $("dots").innerHTML = names.slice(0, 4).map(n => `<b style="background:${color(n)}">${esc(n.charAt(0).toUpperCase())}</b>`).join("");
+    // « Octave, Karim et 2 autres sont déjà dedans » (sans répéter celui qui invite), comme dans l'app
+    $("meta").textContent = (i.members <= 1 || !shown.length) ? "Tu seras parmi les premiers"
+      : (others > 0 ? shown.join(", ") + ` et ${others} autre${others > 1 ? "s" : ""}` : shown.join(" et "))
+        + (shown.length + Math.max(others, 0) > 1 ? " sont déjà dedans" : " est déjà dedans");
     document.title = (i.inviter || "Un ami") + " t'invite dans « " + i.band + " » · Youhou";
   })
   .catch(() => fail());
