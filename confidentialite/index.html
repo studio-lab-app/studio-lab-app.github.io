@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Confidentialité · Youhou</title>
+<meta name="description" content="Ce que l'app garde sur toi, qui le voit, combien de temps, et comment tout effacer.">
+<meta name="robots" content="noindex">
+<style>
+/* Politique de confidentialité PROVISOIRE (18/11/2026), version de test. Même univers que la page Rejoindre. */
+@font-face { font-family: "Bricolage"; src: url(../fonts/BricolageGrotesque.ttf); font-weight: 200 800; font-display: swap; }
+:root { --bg: #0F0E2A; --card: #1A1840; --ink: #FFFFFF; --muted: rgba(255,255,255,.72); --line: rgba(255,255,255,.12);
+  --sun: linear-gradient(100deg, #FFC24A, #FF7A3D 55%, #F0436A); color-scheme: dark; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif; }
+main { max-width: 680px; margin: 0 auto;
+  padding: calc(28px + env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) calc(40px + env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left)); }
+.logo { display: flex; align-items: center; gap: 1px; font-size: 24px; font-weight: 800; font-family: "Bricolage", Georgia, sans-serif; letter-spacing: -0.035em; }
+.logo i { width: 11px; height: 11px; margin-top: 4px; border-radius: 50%; background: var(--sun); display: block; }
+h1 { font-family: "Bricolage", Georgia, sans-serif; letter-spacing: -0.035em; font-size: 34px; line-height: 1.08; margin: 26px 0 8px; text-wrap: balance; }
+h2 { font-family: "Bricolage", Georgia, sans-serif; letter-spacing: -0.02em; font-size: 21px; margin: 34px 0 10px; }
+p, li { font-size: 16px; line-height: 1.55; color: var(--muted); }
+strong { color: var(--ink); }
+ul { padding-left: 20px; margin: 8px 0; }
+li { margin: 5px 0; }
+.note { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 14px 16px; margin: 18px 0; }
+.note p { margin: 0; }
+.tbl { overflow-x: auto; margin: 10px 0; }
+table { border-collapse: collapse; width: 100%; min-width: 420px; }
+th, td { text-align: left; vertical-align: top; padding: 10px 10px; border-bottom: 1px solid var(--line); font-size: 15px; line-height: 1.45; }
+th { color: var(--ink); font-weight: 700; }
+td { color: var(--muted); }
+a { color: #FFC24A; }
+.foot { margin-top: 40px; font-size: 14px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="logo">youh<i></i>u</div>
+  <h1>Confidentialité</h1>
+  <p>Ce que l'app garde sur toi, qui le voit, combien de temps, et comment tout effacer.</p>
+
+  <div class="note"><p><strong>Version provisoire</strong>, pour la phase de test entre amis (TestFlight). Elle sera relue par un avocat et remplacée avant toute ouverture au public. Mise à jour : 18 novembre 2026.</p></div>
+
+  <h2>Qui est responsable</h2>
+  <p>L'app est éditée par son créateur, pendant la phase de test. La société qui la portera sera indiquée ici dès sa création. Pour toute question sur tes données : <strong>studio.sol.app@gmail.com</strong>.</p>
+
+  <h2>Ce que l'app garde</h2>
+  <ul>
+    <li><strong>Ton compte</strong> : e-mail (ou identifiant « Continuer avec Apple »), prénom, photo de profil si tu en mets une, date d'anniversaire si tu la donnes.</li>
+    <li><strong>Ton quartier de départ</strong>, si tu le donnes : une ville ou un quartier, jamais une adresse. Il sert seulement à calculer des temps de trajet.</li>
+    <li><strong>Ce que tu fais dans tes bandes</strong> : sorties, votes, réponses, messages, photos, stories, voyages, dépenses.</li>
+    <li><strong>Ta position</strong>, seulement quand tu touches « Je suis en route » : partagée avec la bande de la sortie, à l'aller uniquement, et effacée dès que tu arrives ou que tu changes d'avis. Jamais au retour, jamais en arrière-plan sans ce geste.</li>
+    <li><strong>L'adresse technique de ton téléphone</strong> pour les notifications, si tu les acceptes.</li>
+    <li><strong>Tes signalements et blocages</strong>, pour la modération.</li>
+  </ul>
+  <p>Ce que tu écris à Sol (l'assistant de l'app) reste sur ton téléphone : il n'est envoyé à personne et n'est pas gardé. Les temps de trajet sont calculés et gardés sur ton téléphone.</p>
+
+  <h2>Qui le voit</h2>
+  <ul>
+    <li>Ce que tu publies dans une bande n'est visible que <strong>par les membres de cette bande</strong>. Ce qui concerne un voyage n'est visible que par ceux qui partent.</li>
+    <li>Un nouveau membre ne voit pas les messages ni les photos d'avant son arrivée.</li>
+    <li>Personne d'autre : pas de profil public, pas de publicité, <strong>aucune revente de données</strong>, aucun pistage publicitaire.</li>
+  </ul>
+
+  <h2>Pourquoi</h2>
+  <p>Uniquement pour faire fonctionner l'app : organiser les sorties de ta bande, afficher les trajets, envoyer les notifications, assurer la sécurité et la modération, et respecter la loi (garder l'identification d'un compte fermé).</p>
+
+  <h2>Combien de temps</h2>
+  <div class="tbl"><table>
+    <tr><th>Donnée</th><th>Durée</th></tr>
+    <tr><td>Message ou photo que tu supprimes</td><td>Effacé tout de suite</td></tr>
+    <tr><td>Photo retirée par un admin ou par une personne présente dessus</td><td>30 jours pour son auteur seulement, puis effacée</td></tr>
+    <tr><td>Position « en route »</td><td>Effacée à l'arrivée ; plus affichée après 15 minutes</td></tr>
+    <tr><td>Bande dissoute</td><td>7 jours de préavis, puis effacée</td></tr>
+    <tr><td>Signalements traités, journal de modération</td><td>1 an</td></tr>
+    <tr><td>Compte supprimé : identifiant, e-mail et dates</td><td>Mis à l'écart 1 an (obligation légale d'un hébergeur), puis effacé</td></tr>
+  </table></div>
+
+  <h2>Où sont les données</h2>
+  <p>Hébergées <strong>en Europe</strong> (Supabase, région Paris), avec des règles d'accès vérifiées par le serveur pour chaque lecture et chaque écriture. Services utilisés : Apple (cartes, recherche de lieux, temps de trajet, notifications, « Continuer avec Apple »), GitHub Pages pour les pages d'invitation. Pour une notification, Apple reçoit seulement son texte et l'adresse technique du téléphone.</p>
+
+  <h2>Tes droits</h2>
+  <ul>
+    <li><strong>Tout effacer</strong> : Profil › Mon compte › Supprimer mon compte. Ton profil, tes messages, tes photos, tes réponses et tes positions sont effacés.</li>
+    <li><strong>Récupérer tes photos</strong> : Profil › Mes données.</li>
+    <li><strong>Accès, correction, effacement</strong>, ou retrait d'une photo où tu apparais (même sans être dans la bande) : écris à <strong>studio.sol.app@gmail.com</strong>. Réponse sous un mois au plus.</li>
+    <li>Tu peux aussi saisir la CNIL (<a href="https://www.cnil.fr">cnil.fr</a>).</li>
+  </ul>
+
+  <h2>Âge</h2>
+  <p>L'app est réservée aux personnes de 18 ans et plus.</p>
+
+  <p class="foot">Version de test provisoire · 18 novembre 2026</p>
+</main>
+</body>
+</html>
