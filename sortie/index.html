@@ -9,7 +9,7 @@
 <meta property="og:site_name" content="Youhou">
 <meta property="og:title" content="On sort ? Dis si tu viens 👇">
 <meta property="og:description" content="Un geste, sans rien installer.">
-<meta property="og:image" content="https://studio-lab-app.github.io/apercu-sortie.jpg">
+<meta property="og:image" content="%%BASE%%/apercu-sortie.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -123,6 +123,15 @@ const rpc = (fn, body) => fetch(`${SUPABASE}/rest/v1/rpc/${fn}`, {
 const store = { get: k => { try { return localStorage.getItem(k) } catch { return null } },
                 set: (k, v) => { try { localStorage.setItem(k, v) } catch {} } };
 $("name").value = store.get("prenom") || "";
+// Une clé au hasard pour ce navigateur : deux personnes du même prénom ne s'écrasent plus (21/11/2026)
+let cle = store.get("cle");
+if (!cle || !/^[0-9a-f]{32}$/.test(cle)) {
+  const b = new Uint8Array(16); crypto.getRandomValues(b);
+  cle = Array.from(b, x => x.toString(16).padStart(2, "0")).join(""); store.set("cle", cle);
+}
+// Le lien personnel d'un +1 « sans l'app » : sa réponse va sur SA ligne
+const plus = (new URLSearchParams(location.search).get("p") || "").replace(/[^0-9a-f]/gi, "").toLowerCase();
+let plusInfo = null;
 
 function when(iso) {
   if (!iso) return "";
@@ -212,7 +221,8 @@ async function answer(a) {
   const n = needName(); if (!n) return;
   mine = a; render();
   try {
-    await rpc("outing_guest_respond", { share, name: n, answer: a });
+    if (plusInfo) await rpc("plus_un_repond", { lien: plus, answer: a });
+    else await rpc("outing_guest_respond", { share, name: n, answer: a, cle });
     $("msg").className = "msg";
     $("msg").textContent = a === "yes" ? `C'est noté, ${n} ! À tout à l'heure 🎉` : a === "maybe" ? `Noté, ${n}. Tu peux changer d'avis ici.` : `Dommage, ${n}. La prochaine fois !`;
     await load();
@@ -223,7 +233,7 @@ async function vote(id) {
   const n = needName(); if (!n) return;
   mine = id; render();
   try {
-    await rpc("outing_guest_vote", { share, option: id, name: n });
+    await rpc("outing_guest_vote", { share, option: id, name: n, cle });
     $("msg").className = "msg"; $("msg").textContent = `C'est noté, ${n} ! Tu peux changer d'avis tant que le vote est ouvert.`;
     await load();
   } catch (e) { $("msg").className = "msg err"; $("msg").textContent = "Le vote est fermé ou impossible. Réessaie."; }
@@ -233,6 +243,11 @@ document.querySelectorAll("#single button").forEach(b => b.onclick = () => answe
 $("name").addEventListener("input", () => { $("msg").textContent = ""; });
 
 async function load() {
+  if (plus.length === 32 && !plusInfo) {
+    plusInfo = await rpc("plus_un_public", { lien: plus }).catch(() => null);
+    if (plusInfo && plusInfo.prenom) { $("name").value = plusInfo.prenom; $("name").readOnly = true; }
+    else plusInfo = null;
+  }
   data = await rpc("outing_public", { share });
   render();
 }
