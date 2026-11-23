@@ -41,6 +41,11 @@ h1 { margin: 8px 0 0; font-size: 36px; line-height: 1.04; font-weight: 800; }
 .btn { width: 100%; display: flex; align-items: center; justify-content: center; min-height: 56px; border-radius: 999px; background: var(--sun);
   color: #1B1B3A; font-weight: 800; font-size: 17px; text-decoration: none; }
 .small { margin: 14px 0 0; color: var(--muted); font-size: 13.5px; line-height: 1.45; }
+/* Point 135 : on arrive ici presque toujours sans l'app (les liens universels ouvrent l'app quand elle est là) */
+.test { width: 100%; margin: 0; padding: 16px 18px; border-radius: 20px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+  font-size: 16.5px; line-height: 1.4; font-weight: 600; }
+.test .sun { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--sun); margin-right: 8px; vertical-align: 1px; }
+.already { margin-top: 18px; color: var(--muted); font-size: 13.5px; font-weight: 600; text-decoration: none; padding: 6px 10px; }
 .skeleton { color: transparent; background: rgba(255,255,255,.08); border-radius: 10px; }
 .hide { display: none !important; }
 </style>
@@ -55,8 +60,11 @@ h1 { margin: 8px 0 0; font-size: 36px; line-height: 1.04; font-weight: 800; }
       <h1 class="d" id="band"><span class="skeleton">Quelqu'un t'invite dans la bande</span></h1>
       <p class="meta" id="meta"></p>
     </div>
-    <a class="btn d" id="open" href="#">Rejoindre la bande</a>
-    <p class="small" id="note">L'app est en test privé pour l'instant.<br>Si rien ne s'ouvre, demande à la personne qui t'invite de t'ajouter au test.</p>
+    <!-- Point 135 : plus de gros bouton vers l'app (sans l'app, Safari disait « adresse pas valide ») -->
+    <p class="test"><span class="sun"></span>Youhou est en test privé. Demande à Antoine de t'ajouter, puis rouvre ce lien.</p>
+    <p class="small">Pour répondre à une sortie, pas besoin de l'app : demande le lien de la sortie.</p>
+    <!-- Le seul endroit qui tente d'ouvrir l'app, et seulement si on le touche -->
+    <a class="already" id="open" href="#">J'ai déjà l'app ›</a>
   </div>
   <div class="body hide" id="ko">
     <div class="mid">
@@ -98,8 +106,6 @@ else {
     if (i.closing) return fail("🕊️", "Cette bande va fermer", "Son admin a lancé sa dissolution : on ne peut plus la rejoindre.");
     const who = i.inviter || "Un ami";
     $("band").innerHTML = esc(who) + " t'invite<br>dans " + esc(i.band);
-    $("open").textContent = "Rejoindre " + i.band;
-    $("note").innerHTML = "L'app est en test privé pour l'instant.<br>Si rien ne s'ouvre, demande à " + esc(who) + " de t'ajouter au test.";
     // Qui est déjà dedans : prénoms seulement (5 au plus), l'invitant en premier
     const names = i.names || [], rest = names.filter(n => n !== i.inviter), shown = rest.slice(0, 2), others = i.members - 1 - shown.length;
     const colors = ["#4F9BF5", "#3FC46B", "#9B6BF2", "#F0436A", "#F2B33D", "#22B8C7"];
