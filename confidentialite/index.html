@@ -41,7 +41,7 @@ a { color: #FFC24A; }
   <h1>Confidentialité</h1>
   <p>Ce que l'app garde sur toi, qui le voit, combien de temps, et comment tout effacer.</p>
 
-  <div class="note"><p><strong>Version provisoire</strong>, pour la phase de test entre amis (TestFlight). Elle sera relue par un avocat et remplacée avant toute ouverture au public. Mise à jour : 18 novembre 2026.</p></div>
+  <div class="note"><p><strong>Version provisoire</strong>, pour la phase de test entre amis (TestFlight). Elle sera relue par un avocat et remplacée avant toute ouverture au public. Mise à jour : 23 novembre 2026.</p></div>
 
   <h2>Qui est responsable</h2>
   <p>L'app est éditée par son créateur, pendant la phase de test. La société qui la portera sera indiquée ici dès sa création. Pour toute question sur tes données : <strong>studio.sol.app@gmail.com</strong>.</p>
@@ -52,15 +52,41 @@ a { color: #FFC24A; }
     <li><strong>Ton quartier de départ</strong>, si tu le donnes : une ville ou un quartier, jamais une adresse. Il sert seulement à calculer des temps de trajet.</li>
     <li><strong>Ce que tu fais dans tes bandes</strong> : sorties, votes, réponses, messages, photos, stories, voyages, dépenses.</li>
     <li><strong>Ta position</strong>, seulement quand tu touches « Je suis en route » : partagée avec la bande de la sortie, à l'aller uniquement, et effacée dès que tu arrives ou que tu changes d'avis. Jamais au retour, jamais en arrière-plan sans ce geste.</li>
+    <li><strong>Ta position envoyée dans une discussion (« Ma position »)</strong> : un seul point, visible par les membres de cette discussion, dont les coordonnées sont effacées au bout de 6 heures.</li>
     <li><strong>L'adresse technique de ton téléphone</strong> pour les notifications, si tu les acceptes.</li>
+    <li><strong>Les adresses de tes bandes (« Nos adresses »)</strong> : les lieux « Déjà faits » sont retrouvés à partir de vos sorties passées, rien de plus n'est gardé. Pour un lieu ajouté « À tester », on garde son nom, son adresse, son type, son quartier et sa position, la bande, et qui l'a ajouté et quand. Seuls les membres de cette bande le voient. Jamais une adresse privée.</li>
+    <li><strong>Ton avis « Tu y retournerais ? »</strong> après une sortie où tu étais : oui ou non, et 3 mots au plus choisis dans une liste. Il est anonyme : la bande ne voit que des totaux, jamais qui a répondu quoi. Tu peux l'effacer à tout moment.</li>
     <li><strong>Tes signalements et blocages</strong>, pour la modération.</li>
     <li><strong>Si tu réponds sans l'app</strong> (page d'invitation à une sortie) : ton prénom et ta réponse, visibles par la bande qui t'a invité.</li>
     <li><strong>Les +1 d'une sortie</strong> : quelqu'un hors de la bande, invité par un membre, voit pour cette sortie seulement le prénom et la photo de profil de ceux qui viennent, et l'album de cette soirée. La bande voit son prénom, sa photo de profil, sa réponse et les photos qu'il ajoute, rien d'autre de son compte.</li>
   </ul>
-  <p>Ce que tu écris à Sol (l'assistant de l'app) reste sur ton téléphone : il n'est envoyé à personne et n'est pas gardé. Les temps de trajet sont calculés et gardés sur ton téléphone.</p>
+  <p><strong>Sur ton téléphone seulement</strong>, rien n'est envoyé à notre serveur :</p>
+  <ul>
+    <li>ce que tu écris à Sol (l'assistant de l'app) : il n'est envoyé à personne et n'est pas gardé ;</li>
+    <li>les temps de trajet, et les pays de ton passeport, calculés à partir de tes voyages ;</li>
+    <li>une copie de ce que tu as vu en dernier (bandes, membres, sorties, aperçu des discussions), protégée par le téléphone, pour que l'app s'ouvre vite et marche sans réseau. Jamais les messages complets ;</li>
+    <li>les photos de tes bandes que tu as déjà affichées (et leurs miniatures), gardées 7 jours au plus pour ne pas les retélécharger. Elles sont effacées quand tu quittes la bande ou que tu te déconnectes. Une photo « vue une fois » n'y est jamais ;</li>
+    <li>un message ou une sortie que tu as commencé et pas encore envoyé, pour le retrouver si l'app se ferme. Il est effacé dès que tu l'envoies ou l'annules, ou si tu fermes l'app toi-même ;</li>
+    <li>quelques réglages d'affichage (la dernière bande ouverte, la dernière version dont tu as vu les nouveautés).</li>
+  </ul>
+  <p>La copie de ce que tu as vu est effacée quand tu te déconnectes ou que tu supprimes ton compte ; le reste disparaît si tu supprimes l'app.</p>
 
   <h2>Retrouver tes amis</h2>
   <p>Si tu le demandes, l'app lit les e-mails de ton carnet d'adresses sur ton téléphone et n'envoie qu'une empreinte codée de chacun (jamais les e-mails eux-mêmes, ni les noms ni les numéros). Notre serveur la compare aux comptes Youhou dont le titulaire a accepté d'être retrouvé, puis l'efface aussitôt : ton carnet n'est jamais copié ni gardé, et personne n'est contacté. Tu vois seulement le prénom et la photo des amis trouvés. Toi-même, tu n'es retrouvable que si tu as coché « Mes amis peuvent me retrouver » (décoché par défaut, modifiable dans Profil › Confidentialité). Les personnes de ton carnet qui n'ont pas l'app ne sont jamais enregistrées. Si tu touches « Lui demander », la personne voit ton prénom et ta photo pour accepter ou ignorer ta demande. Dès sa réponse, ou au bout de 14 jours, la demande disparaît ; seule une trace technique (vos deux identifiants et une date) est gardée 14 jours au plus, pour éviter les demandes répétées, puis effacée. Base légale : ton consentement pour être retrouvable ; le service que tu demandes pour la recherche ; notre intérêt légitime, avec un traitement instantané, pour les contacts comparés.</p>
+
+  <h2>Voyages</h2>
+  <p><strong>Dire à mes amis que je pars</strong> (éteint par défaut) : si tu l'allumes pour un voyage, les membres de tes autres bandes voient seulement la ville et les dates, jamais avec qui tu pars, jusqu'à ton retour. Tu peux le cacher à certaines personnes, sans qu'elles le sachent, ou l'éteindre à tout moment. Si quelqu'un demande à venir, sa demande t'arrive à toi seul ; si tu la proposes aux autres voyageurs, ils voient son prénom et sa photo. Les demandes disparaissent à la réponse ; une trace technique est gardée jusqu'à 14 jours après le voyage pour éviter les demandes répétées.</p>
+
+  <h2>Photos</h2>
+  <ul>
+    <li>Une photo publiée dans une bande n'est visible que par ses membres (et, pour l'album d'une soirée, par ses +1).</li>
+    <li><strong>Qui peut la retirer</strong> : son auteur (effacée tout de suite), l'admin de la bande, une personne qui est dessus (« Retirer cette photo, je suis dessus », sans attendre l'admin), ou notre équipe après un signalement. Une photo retirée par un autre reste 30 jours visible de son auteur seulement (« Mes photos retirées »), puis elle est effacée.</li>
+    <li>Une personne qui est sur une photo <strong>sans avoir l'app</strong> peut en demander le retrait à studio.sol.app@gmail.com. Réponse sous un mois au plus.</li>
+    <li><strong>Photo « vue une fois »</strong> : avant une soirée, tu peux envoyer une photo aux membres qui viennent, jamais aux +1 ni à une personne bloquée. Chacun ne peut l'ouvrir qu'une fois. L'admin de la bande ne la voit pas. Elle part sans le lieu de la prise de vue ni le modèle du téléphone. Elle est effacée de nos serveurs dès que tous l'ont vue, et au plus tard à la fin de la soirée. Elle n'est jamais enregistrée dans l'album ni sur le téléphone. Si un destinataire fait une capture d'écran, tu en es prévenu, et il le sait à l'avance ; une photo peut toujours être prise avec un autre appareil. Si la photo est signalée, une copie est gardée pour notre équipe le temps de l'examen (6 mois au plus si elle est retirée). Nous gardons un an une trace technique de l'envoi (compte, date et heure), jamais la photo ni la liste des destinataires.</li>
+  </ul>
+
+  <h2>Signalements et modération</h2>
+  <p>Tu peux signaler un message, une photo, une story ou une personne. Notre équipe ne voit <strong>que ce qui est signalé</strong>, et ce qu'il faut pour comprendre (le contenu, son contexte proche, le motif). Elle ne parcourt jamais tes discussions ni tes photos. <strong>Une personne décide toujours</strong>, il n'y a aucune décision automatique. La personne signalée ne sait pas qui l'a signalée. Une photo signalée comme intime ou impliquant un mineur est masquée tout de suite, le temps de la vérification. Les contenus les plus graves peuvent être transmis aux autorités (PHAROS, police). Tu suis tes signalements dans Profil › Mes données › Mes signalements, et tu peux contester une décision à studio.sol.app@gmail.com, avec son numéro.</p>
 
   <h2>Qui le voit</h2>
   <ul>
@@ -74,10 +100,10 @@ a { color: #FFC24A; }
 
   <h2>Sur quelle base</h2>
   <ul>
-    <li><strong>Faire fonctionner l'app</strong> (compte, bandes, sorties, messages, photos, notifications techniques) : l'exécution du service que tu demandes, selon les conditions d'utilisation.</li>
-    <li><strong>Ta position « en route », les notifications et ta date d'anniversaire</strong> : ton consentement, que tu peux retirer à tout moment (dans l'app ou les réglages de ton téléphone).</li>
+    <li><strong>Faire fonctionner l'app</strong> (compte, bandes, sorties, messages, photos, adresses, avis, notifications techniques, alerte de capture d'écran) : l'exécution du service que tu demandes, selon les conditions d'utilisation.</li>
+    <li><strong>Ta position « en route » ou envoyée dans une discussion, les notifications et ta date d'anniversaire</strong> : ton consentement, que tu peux retirer à tout moment (dans l'app ou les réglages de ton téléphone).</li>
     <li><strong>La sécurité, la modération et le suivi des signalements</strong> : l'intérêt légitime de protéger les utilisateurs.</li>
-    <li><strong>La conservation d'un an de l'identification d'un compte fermé</strong> : une obligation légale (décret n° 2021-1362).</li>
+    <li><strong>La conservation d'un an de l'identification d'un compte fermé, et de la trace technique de l'envoi d'une photo « vue une fois »</strong> : une obligation légale d'hébergeur (décret n° 2021-1362).</li>
   </ul>
 
   <h2>Combien de temps</h2>
@@ -88,14 +114,21 @@ a { color: #FFC24A; }
     <tr><td>Message ou photo que tu supprimes</td><td>Effacé tout de suite</td></tr>
     <tr><td>Photo retirée par un admin ou par une personne présente dessus</td><td>30 jours pour son auteur seulement, puis effacée</td></tr>
     <tr><td>Position « en route »</td><td>Effacée à l'arrivée ; plus affichée après 15 minutes</td></tr>
+    <tr><td>« Ma position » envoyée dans une discussion</td><td>Coordonnées effacées au bout de 6 heures</td></tr>
     <tr><td>Adresse de notification du téléphone</td><td>Jusqu'à la déconnexion, la désactivation des notifications ou la suppression du compte</td></tr>
     <tr><td>Bande dissoute</td><td>7 jours de préavis, puis effacée</td></tr>
+    <tr><td>Photo « vue une fois »</td><td>Effacée dès que tous l'ont vue, au plus tard à la fin de la soirée</td></tr>
+    <tr><td>Trace technique de l'envoi d'une photo « vue une fois » (compte, date et heure)</td><td>1 an</td></tr>
+    <tr><td>Copie d'un contenu signalé</td><td>Le temps de l'examen ; pour une photo « vue une fois » retirée, 6 mois au plus</td></tr>
     <tr><td>Signalements traités, journal de modération</td><td>1 an</td></tr>
+    <tr><td>Adresse « À tester »</td><td>Jusqu'à ce qu'elle soit retirée, ou effacée avec la bande</td></tr>
+    <tr><td>Avis « Tu y retournerais ? »</td><td>Jusqu'à ce que tu l'effaces ; effacé avec la sortie ou ton compte</td></tr>
     <tr><td>Compte supprimé : identifiant, e-mail et dates</td><td>Mis à l'écart 1 an (obligation légale d'un hébergeur), puis effacé</td></tr>
   </table></div>
+  <p>Une donnée effacée peut rester quelques jours dans les sauvegardes techniques de la base, puis elle disparaît. Les photos ne sont pas dans ces sauvegardes.</p>
 
   <h2>Où sont les données</h2>
-  <p>Hébergées <strong>en Europe</strong> (Supabase, région Paris), avec des règles d'accès vérifiées par le serveur pour chaque lecture et chaque écriture. Services utilisés : Apple (cartes, recherche de lieux, temps de trajet, notifications, « Continuer avec Apple »), GitHub Pages pour les pages d'invitation. Pour une notification, Apple reçoit seulement son texte et l'adresse technique du téléphone.</p>
+  <p>Hébergées <strong>en Europe</strong> (Supabase, région Paris), avec des règles d'accès vérifiées par le serveur pour chaque lecture et chaque écriture. Services utilisés : Apple (cartes, recherche de lieux et fiches des lieux d'Apple Plans, temps de trajet, notifications, « Continuer avec Apple »), GitHub Pages pour les pages d'invitation. Pour une notification, Apple reçoit seulement son texte et l'adresse technique du téléphone.</p>
   <p>Certains prestataires sont établis aux États-Unis (Supabase, Apple, GitHub) : les éventuels transferts de données hors de l'Union européenne sont encadrés par le cadre de protection des données UE–États-Unis ou par les clauses contractuelles types de la Commission européenne. En ouvrant une page d'invitation, GitHub voit ton adresse IP, comme tout hébergeur de site.</p>
 
   <h2>Cookies</h2>
@@ -104,9 +137,9 @@ a { color: #FFC24A; }
   <h2>Tes droits</h2>
   <ul>
     <li><strong>Tout effacer</strong> : Profil › Mon compte › Supprimer mon compte. Ton profil, tes messages, tes photos, tes réponses et tes positions sont effacés.</li>
-    <li><strong>Récupérer tes photos</strong> : Profil › Mes données.</li>
+    <li><strong>Récupérer tes données</strong> : Profil › Mes données › « Télécharger mes données » te donne en un toucher un fichier de tes données (format JSON), et « Enregistrer toutes mes photos » les met dans ton téléphone.</li>
     <li><strong>Accès, correction, effacement, limitation, opposition</strong>, ou retrait d'une photo où tu apparais (même sans être dans la bande) : écris à <strong>studio.sol.app@gmail.com</strong>. Réponse sous un mois au plus.</li>
-    <li><strong>Portabilité</strong> : sur demande à la même adresse, tu reçois tes données dans un format courant (pas seulement tes photos).</li>
+    <li><strong>Portabilité</strong> : le fichier « Télécharger mes données » ; tu peux aussi le demander à la même adresse.</li>
     <li><strong>Retirer ton consentement</strong> à tout moment (position, notifications, date d'anniversaire), sans effet sur ce qui a été fait avant.</li>
     <li><strong>Après ton décès</strong> : tu peux donner des directives sur le sort de tes données (loi Informatique et Libertés, article 85).</li>
     <li>Tu peux aussi saisir la CNIL (<a href="https://www.cnil.fr">cnil.fr</a>).</li>
@@ -115,7 +148,7 @@ a { color: #FFC24A; }
   <h2>Âge</h2>
   <p>L'app est réservée aux personnes de 18 ans et plus.</p>
 
-  <p class="foot">Version de test provisoire · 18 novembre 2026</p>
+  <p class="foot">Version de test provisoire · 23 novembre 2026</p>
 </main>
 </body>
 </html>
