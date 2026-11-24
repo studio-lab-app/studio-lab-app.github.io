@@ -150,8 +150,10 @@ function render() {
   const o = data, single = o.kind === "precise";
   $("ok").classList.remove("hide");
   const closed = o.status !== "open";
-  // Les étapes, comme dans l'app : Qui vient ? / Vote en cours → Confirmée → Réservée
-  $("tag").textContent = o.reserved ? "Réservée" : closed ? "Confirmée" : (single ? "Qui vient ?" : "Vote en cours");
+  // Point 173 : la sortie passée (terminée, ou 6 h après le début) : les réponses sont figées, plus de boutons
+  const passe = o.status !== "cancelled" && (o.status === "done" || (o.starts_at && Date.now() > new Date(o.starts_at).getTime() + 6 * 3600e3));
+  // Les étapes, comme dans l'app : Qui vient ? / Vote en cours → Confirmée → Réservée → C'est passé
+  $("tag").textContent = passe ? "C'est passé" : o.reserved ? "Réservée" : closed ? "Confirmée" : (single ? "Qui vient ?" : "Vote en cours");
   $("tag").className = "tag" + (closed ? " ok" : "");
   $("kicker").textContent = `${o.host || "Quelqu'un"} propose à ${o.band}`;
   $("title").textContent = o.title;
@@ -172,8 +174,9 @@ function render() {
   document.title = `${o.title} · ${o.band}`;
 
   if (single) {
-    $("ask").textContent = "Tu viens ?";
-    $("single").classList.remove("hide");
+    $("ask").textContent = passe ? "La sortie est passée" : "Tu viens ?";
+    if (passe) { $("single").classList.add("hide"); $("name").classList.add("hide"); }
+    else $("single").classList.remove("hide");
     const me = ($("name").value || "").trim().toLowerCase();
     const myAnswer = me && o.answers.find(a => a.guest && a.name.trim().toLowerCase() === me);
     mine = myAnswer ? myAnswer.answer : mine;
@@ -231,7 +234,11 @@ async function answer(a) {
     $("msg").className = "msg";
     $("msg").textContent = a === "yes" ? `C'est noté, ${n} ! À tout à l'heure 🎉` : a === "maybe" ? `Noté, ${n}. Tu peux changer d'avis ici.` : `Dommage, ${n}. La prochaine fois !`;
     await load();
-  } catch (e) { $("msg").className = "msg err"; $("msg").textContent = "Impossible d'enregistrer. Réessaie."; }
+  } catch (e) {
+    $("msg").className = "msg err";
+    $("msg").textContent = /terminée/.test(String(e && e.message || "")) ? "La sortie est passée : les réponses sont figées." : "Impossible d'enregistrer. Réessaie.";
+    if (/terminée/.test(String(e && e.message || ""))) await load();
+  }
 }
 
 async function vote(id) {
