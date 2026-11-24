@@ -141,11 +141,16 @@ if (!cle || !/^[0-9a-f]{32}$/.test(cle)) {
 const plus = (new URLSearchParams(location.search).get("p") || "").replace(/[^0-9a-f]/gi, "").toLowerCase();
 let plusInfo = null;
 
+// « 19 h 30 », « 20 h » (comme dans l'app, point 193 ; espaces insécables)
+function heure(d) {
+  const h = d.getHours(), m = d.getMinutes();
+  return m === 0 ? `${h}\u00a0h` : `${h}\u00a0h\u00a0${String(m).padStart(2, "0")}`;
+}
 function when(iso) {
   if (!iso) return "";
   const d = new Date(iso);
   const s = d.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" }) + " à " +
-            d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" }).replace(":", "h").replace("h00", "h");
+            heure(d);
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
@@ -165,10 +170,24 @@ function render() {
   // Anciennes sorties à un plan : le lieu ou le détail était écrit à la main dans le premier plan
   const legacy = single && !o.detail && !o.place && o.options.length ? o.options[0].label : "";
   $("detail").textContent = o.detail || (legacy ? "📍 " + legacy : "");
-  if (o.place) {
+  if (o.place && o.place.prive) {
+    // Point 199 (JURIDIQUE § 6.16) : chez quelqu'un. « Chez Karim · Boulogne-Billancourt » ; l'adresse seulement sur le lien
+    // personnel d'un +1, après son « Je viens » (jamais par le lien général, qui se transfère)
+    $("place").classList.remove("hide");
+    $("pname").textContent = o.place.name + (o.place.ville ? ` · ${o.place.ville}` : "");
+    $("paddr").textContent = o.place.address
+      || (plusInfo ? "L'adresse s'affiche quand tu as répondu « Je viens »." : `L'adresse sera donnée par ${o.place.donnee_par || o.host || "l'organisateur"}.`);
+    const ok = o.place.lat != null && o.place.lng != null;
+    $("route").classList.toggle("hide", !ok);
+    // Aux coordonnées, jamais par le nom (« Chez Karim » n'est pas un lieu à chercher)
+    if (ok) $("route").href = /iPhone|iPad|Mac/.test(navigator.userAgent)
+      ? `https://maps.apple.com/?ll=${o.place.lat},${o.place.lng}&q=${encodeURIComponent(o.place.name)}`
+      : `https://www.google.com/maps/search/?api=1&query=${o.place.lat},${o.place.lng}`;
+  } else if (o.place) {
     $("place").classList.remove("hide");
     $("pname").textContent = o.place.name;
     $("paddr").textContent = o.place.address || "";
+    $("route").classList.remove("hide");
     const q = encodeURIComponent(`${o.place.name} ${o.place.address || ""}`);
     $("route").href = /iPhone|iPad|Mac/.test(navigator.userAgent)
       ? `https://maps.apple.com/?q=${encodeURIComponent(o.place.name)}&ll=${o.place.lat},${o.place.lng}`
@@ -267,7 +286,10 @@ async function load() {
     if (plusInfo && plusInfo.prenom) { $("name").value = plusInfo.prenom; $("name").readOnly = true; }
     else { plusInfo = null; return perime(); }   // point 162 : +1 retiré : rien de la sortie
   }
-  data = await rpc("outing_public", { share });
+  // Le lien personnel d'un +1 est envoyé (point 199 : l'adresse d'un domicile seulement pour lui, après son « Je viens ») ;
+  // une base sans la 0185 : l'ancienne forme
+  data = plusInfo ? await rpc("outing_public", { share, cle, plus }).catch(() => rpc("outing_public", { share }))
+                  : await rpc("outing_public", { share });
   if (plus.length === 32 && data && data.status === "cancelled") return perime();   // sortie annulée
   render();
 }
