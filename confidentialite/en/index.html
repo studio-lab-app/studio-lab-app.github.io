@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Traduction anglaise de v1/web/confidentialite/index.html (25/11/2026) : À RELIRE PAR LA JURIDIQUE avant toute mise en ligne. -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Privacy · Youhou</title>
+<meta name="description" content="What the app keeps about you, who sees it, for how long, and how to delete it all.">
+<meta name="robots" content="noindex">
+<style>
+/* Politique de confidentialité PROVISOIRE (18/11/2026), version de test. Même univers que la page Rejoindre. */
+@font-face { font-family: "Bricolage"; src: url(../../fonts/BricolageGrotesque.ttf); font-weight: 200 800; font-display: swap; }
+:root { --bg: #0F0E2A; --card: #1A1840; --ink: #FFFFFF; --muted: rgba(255,255,255,.72); --line: rgba(255,255,255,.12);
+  --sun: linear-gradient(100deg, #FFC24A, #FF7A3D 55%, #F0436A); color-scheme: dark; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif; }
+main { max-width: 680px; margin: 0 auto;
+  padding: calc(28px + env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) calc(40px + env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left)); }
+.logo { display: flex; align-items: center; gap: 1px; font-size: 24px; font-weight: 800; font-family: "Bricolage", Georgia, sans-serif; letter-spacing: -0.035em; }
+.logo i { width: 12px; height: 12px; margin-top: 4px; border-radius: 50%; background: var(--sun); display: block; }
+h1 { font-family: "Bricolage", Georgia, sans-serif; letter-spacing: -0.035em; font-size: 34px; line-height: 1.08; margin: 26px 0 8px; text-wrap: balance; }
+h2 { font-family: "Bricolage", Georgia, sans-serif; letter-spacing: -0.02em; font-size: 21px; margin: 34px 0 10px; }
+p, li { font-size: 16px; line-height: 1.55; color: var(--muted); }
+strong { color: var(--ink); }
+ul { padding-left: 20px; margin: 8px 0; }
+li { margin: 5px 0; }
+.note { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 14px 16px; margin: 18px 0; }
+.note p { margin: 0; }
+.tbl { overflow-x: auto; margin: 10px 0; }
+table { border-collapse: collapse; width: 100%; min-width: 420px; }
+th, td { text-align: left; vertical-align: top; padding: 10px 10px; border-bottom: 1px solid var(--line); font-size: 15px; line-height: 1.45; }
+th { color: var(--ink); font-weight: 700; }
+td { color: var(--muted); }
+a { color: #FFC24A; }
+.foot { margin-top: 40px; font-size: 14px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="logo">youh<i></i>u</div>
+  <h1>Privacy</h1>
+  <p>What the app keeps about you, who sees it, for how long, and how to delete it all.</p>
+
+  <div class="note"><p><strong>Draft version</strong>, for the testing phase among friends (TestFlight). It will be reviewed by a lawyer and replaced before any public launch. Last updated: November 25, 2026.</p></div>
+
+  <h2>Who's responsible (data controller)</h2>
+  <p>The app is published by its creator (data controller) during the testing phase. The company that will run it will be named here as soon as it's set up. For any question about your data: <strong>studio.sol.app@gmail.com</strong>.</p>
+
+  <h2>What the app keeps</h2>
+  <ul>
+    <li><strong>Your account</strong> : email (or your “Continue with Apple” ID), first name, profile photo if you add one, birthday if you share it.</li>
+    <li><strong>Your starting area</strong>, if you share it: a city or a neighborhood, never an address. It's only used to work out travel times.</li>
+    <li><strong>What you do in your crews</strong> : plans, votes, answers, messages, photos, stories, trips, expenses.</li>
+    <li><strong>Your location</strong>, only when you tap “I'm on my way”: shared with the crew for that plan, on the way there only, and deleted as soon as you arrive or change your mind. Never on the way home, never in the background without that tap.</li>
+    <li><strong>Your location sent in a chat (“My location”)</strong> : a single dot, visible to the members of that chat, with its coordinates deleted after 6 hours.</li>
+    <li><strong>Your phone's technical address</strong> for notifications, if you allow them.</li>
+    <li><strong>Your crews' spots (“Our spots”)</strong> : “Been there” places are found from your past plans, and nothing more is kept. For a place added as “To try,” we keep its name, address, type, neighborhood and location, the crew, and who added it and when. Only members of that crew can see it. Never a private address.</li>
+    <li><strong>Your “Would you go back?” review</strong> after a plan you went to: yes or no, plus up to 3 words picked from a list. It's anonymous: the crew only sees totals, never who answered what. You can delete it at any time.</li>
+    <li><strong>Your reports and blocks</strong>, for moderation.</li>
+    <li><strong>The IP address and time</strong> of your logins and of each message or photo you post: kept for 1 year, as the law requires of hosting providers (French decree no. 2021-1362), and only disclosed to the courts on a legal request.</li>
+    <li><strong>If you answer without the app</strong> (the invite page for a plan): your first name and your answer, visible to the crew that invited you.</li>
+    <li><strong>A plan's +1s</strong> : someone outside the crew, invited by a member, sees for that plan only the first name and profile photo of the people going, their “On my way” and “I'm here” (never their location), their quick messages for the night, and that night's album. The crew sees their first name, profile photo, answer, quick messages and the photos they add, nothing else from their account.</li>
+  </ul>
+  <p><strong>On your phone only</strong> : some things stay only on your phone, so the app opens fast and works offline: what you write to Sol, travel times, your passport, a message or plan not sent yet, a copy of what you last saw, and photos already shown (7 days at most, never a view-once photo). They're deleted when you log out, leave the crew or delete the app.</p>
+
+  <h2>Finding your friends</h2>
+  <p>If you ask, the app reads the email addresses in your phone's contacts and sends only a coded fingerprint of each one (never the emails themselves, nor names or numbers). Our server compares it with the Youhou accounts whose owners agreed to be found, then deletes it right away: your contacts are never copied or kept, and nobody is contacted. You only see the first name and photo of the friends found. You can only be found yourself if you've checked “My friends can find me” (unchecked by default, changeable in Profile › Privacy and data). People in your contacts who don't have the app are never saved. If you tap “Ask them,” the person sees your first name and photo so they can accept or ignore your request. As soon as they answer, or after 14 days, the request disappears; only a technical record (your two IDs and a date) is kept for 14 days at most, to prevent repeated requests, then deleted. Legal basis: your consent to be findable; the service you ask for when searching; our legitimate interest, with instant processing, for the contacts compared.</p>
+
+  <h2>Trips</h2>
+  <p><strong>Tell my friends I'm away</strong> (off by default): if you turn it on for a trip, members of your other crews only see the city and the dates, never who you're going with, until you're back. You can hide it from certain people, without them knowing, or turn it off at any time. If someone asks to come along, their request only reaches you; if you suggest them to the other travelers, they see their first name and photo. Requests disappear once answered; a technical record is kept until 14 days after the trip to prevent repeated requests.</p>
+
+  <h2>Photos</h2>
+  <ul>
+    <li>A photo posted in a crew is only visible to its members (and, for a night's album, to that night's +1s).</li>
+    <li><strong>Who can remove it</strong> : whoever posted it (deleted right away), the crew's admin, someone who's in it (“Remove this photo, I'm in it,” without waiting for the admin), or our team after a report. A photo removed by someone else stays visible for 30 days to whoever posted it only (“My removed photos”), then it's deleted.</li>
+    <li>Someone who's in a photo <strong>without having the app</strong> can ask for it to be removed at studio.sol.app@gmail.com. We'll answer within one month at most.</li>
+    <li><strong>View-once photo</strong> : before a night out, you can send a photo to the members who are going, never to +1s or to someone blocked. Each person can open it only once. The crew's admin doesn't see it. It's sent without the location where it was taken or the phone model. It's deleted from our servers as soon as everyone has seen it, and at the latest at the end of the night. It's never saved to the album or to the phone. If someone takes a screenshot, the app lets you know, and that person knows this ahead of time; a photo can always be taken with another device. If the photo is reported, a copy is kept for our team while it's reviewed (6 months at most if it's removed). We keep a technical record of the sending (account, date and time) for one year, never the photo or the list of recipients. You see who opened it and when, and who took a screenshot, until the end of the night; that information is then deleted. Someone who receives it can reply with a view-once photo sent only to you, with the same rules.</li>
+  </ul>
+
+  <h2>Reports and moderation</h2>
+  <p>You can report a message, a photo, a story or a person. Our team only sees <strong>what's reported</strong>, and what's needed to understand it (the content, its immediate context, the reason). It never browses your chats or your photos. <strong>A person always decides</strong>: there are no automated decisions. The person reported doesn't know who reported them. A photo reported as intimate or involving a minor is hidden right away while it's checked. The most serious content may be passed on to the authorities (PHAROS, the French government's platform for reporting illegal online content, or the police). You can follow your reports in Profile › Privacy and data › My reports, and you can appeal a decision at studio.sol.app@gmail.com, with its number.</p>
+
+  <h2>Who sees it</h2>
+  <ul>
+    <li>What you post in a crew is only visible <strong>to the members of that crew</strong>. Anything about a trip is only visible to the people going.</li>
+    <li>A new member doesn't see messages or photos from before they joined.</li>
+    <li>Nobody else: no public profile, no ads, <strong>no selling of data</strong>, no ad tracking.</li>
+  </ul>
+
+  <h2>Why</h2>
+  <p>Only to make the app work: organizing your crew's plans, showing travel times, sending notifications, keeping things safe and moderated, and complying with the law (keeping the identification of a closed account).</p>
+
+  <h2>On what basis</h2>
+  <ul>
+    <li><strong>Making the app work</strong> (account, crews, plans, messages, photos, spots, reviews, technical notifications, screenshot alert): performing the service you ask for, under the terms of use.</li>
+    <li><strong>Your “on my way” location or a location sent in a chat, notifications and your birthday</strong> : your consent, which you can withdraw at any time (in the app or in your phone's settings).</li>
+    <li><strong>Safety, moderation and following up on reports</strong> : our legitimate interest in protecting users.</li>
+    <li><strong>Keeping a closed account's identification, and the technical record of a view-once photo being sent, for one year</strong> : a legal obligation for hosting providers under French law (decree no. 2021-1362).</li>
+  </ul>
+
+  <h2>How long</h2>
+  <div class="tbl"><table>
+    <tr><th>Data</th><th>How long</th></tr>
+    <tr><td>Your account and what you post</td><td>As long as your account exists (or until you delete it)</td></tr>
+    <tr><td>Story</td><td>24 hours (unless you copy it to a night's album)</td></tr>
+    <tr><td>A message or photo you delete</td><td>Deleted right away</td></tr>
+    <tr><td>A photo removed by an admin or by someone who's in it</td><td>30 days, for whoever posted it only, then deleted</td></tr>
+    <tr><td>“On my way” location</td><td>Deleted on arrival; no longer shown after 15 minutes</td></tr>
+    <tr><td>“My location” sent in a chat</td><td>Coordinates deleted after 6 hours</td></tr>
+    <tr><td>Phone notification address</td><td>Until you log out, turn off notifications or delete your account</td></tr>
+    <tr><td>Disbanded crew</td><td>7 days' notice, then deleted</td></tr>
+    <tr><td>Quick messages for the night</td><td>Deleted at the end of the night, by the next day at the latest</td></tr>
+    <tr><td>View-once photo</td><td>Deleted as soon as everyone has seen it, at the latest at the end of the night</td></tr>
+    <tr><td>Technical record of a view-once photo being sent (account, date and time)</td><td>1 year</td></tr>
+    <tr><td>Copy of reported content</td><td>While it's reviewed; for a removed view-once photo, 6 months at most</td></tr>
+    <tr><td>Handled reports, moderation log</td><td>1 year</td></tr>
+    <tr><td>IP address and time of logins and posts</td><td>1 year (French decree no. 2021-1362), only disclosed to the courts on a legal request</td></tr>
+    <tr><td>“To try” spot</td><td>Until it's removed, or deleted along with the crew</td></tr>
+    <tr><td>“Would you go back?” review</td><td>Until you delete it; deleted along with the plan or your account</td></tr>
+    <tr><td>Deleted account: ID, email and dates</td><td>Set aside for 1 year (legal obligation for a hosting provider), then deleted</td></tr>
+  </table></div>
+  <p>Deleted data can stay a few days in the database's technical backups, then it's gone. Photos aren't in these backups.</p>
+
+  <h2>Where the data is</h2>
+  <p>Hosted <strong>in Europe</strong> (Supabase, Paris region), with access rules checked by the server for every read and every write. Services used: <strong>Apple Maps</strong> (maps, place search, place details, travel times), which Apple provides under its own responsibility; <strong>Apple</strong>, on our behalf, for notifications and “Continue with Apple” (for a notification, Apple only receives its text and the phone's technical address); <strong>Cloudflare</strong>, which serves our team's moderation tool (reports and reported content go through it); <strong>GitHub</strong>, for the invite pages (GitHub Pages) and the database backups (GitHub Actions).</p>
+  <p>Some providers are based in the United States (Supabase, Apple, Cloudflare, GitHub): any data transfers outside the European Union are covered by the EU–US Data Privacy Framework or by the European Commission's standard contractual clauses. When you open an invite page, GitHub sees your IP address, like any website host.</p>
+
+  <h2>Cookies</h2>
+  <p><strong>No cookies, no ad or analytics trackers</strong>, either in the app or on the invite pages. The page for answering a plan only remembers, in your browser, your first name (to fill it in next time) and a random code that says nothing about you: it just keeps two people with the same first name from overwriting each other.</p>
+
+  <h2>Your rights</h2>
+  <ul>
+    <li><strong>Delete everything</strong> : Profile › Privacy and data › Delete my account. Your profile, messages, photos, answers and locations are deleted. The plans, trips and expenses you created stay with the crew, signed “Former member,” without your name or photo.</li>
+    <li><strong>Get your data</strong> : Profile › Privacy and data › “Download my data” gives you a file of your data (JSON format) in one tap, and “Save all my photos” puts them on your phone.</li>
+    <li><strong>Access, correction, deletion, restriction, objection</strong>, or removal of a photo you appear in (even if you're not in the crew): write to <strong>studio.sol.app@gmail.com</strong>. We'll answer within one month at most.</li>
+    <li><strong>Portability</strong> : the “Download my data” file; you can also ask for it at the same address.</li>
+    <li><strong>Withdraw your consent</strong> at any time (location, notifications, birthday), with no effect on what was done before.</li>
+    <li><strong>After your death</strong> : you can give instructions on what happens to your data (French Data Protection Act, article 85).</li>
+    <li>You can also lodge a complaint with the CNIL, the French data protection authority (<a href="https://www.cnil.fr">cnil.fr</a>), or with the authority where you live (in the UK, the ICO: <a href="https://ico.org.uk">ico.org.uk</a>).</li>
+  </ul>
+
+  <h2>Age</h2>
+  <p>The app is for people 18 and over.</p>
+
+  <p class="foot">Draft test version · November 24, 2026</p>
+  <p class="foot">Pages hosted by GitHub Pages: GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. Contact: <a href="https://support.github.com/contact">support.github.com/contact</a>.</p>
+</main>
+</body>
+</html>
