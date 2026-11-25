@@ -41,7 +41,7 @@ a { color: #FFC24A; }
   <h1>Confidentialité</h1>
   <p>Ce que l'app garde sur toi, qui le voit, combien de temps, et comment tout effacer.</p>
 
-  <div class="note"><p><strong>Version provisoire</strong>, pour la phase de test entre amis (TestFlight). Elle sera relue par un avocat et remplacée avant toute ouverture au public. Mise à jour : 24 novembre 2026.</p></div>
+  <div class="note"><p><strong>Version provisoire</strong>, pour la phase de test entre amis (TestFlight). Elle sera relue par un avocat et remplacée avant toute ouverture au public. Mise à jour : 25 novembre 2026.</p></div>
 
   <h2>Qui est responsable</h2>
   <p>L'app est éditée par son créateur, pendant la phase de test. La société qui la portera sera indiquée ici dès sa création. Pour toute question sur tes données : <strong>studio.sol.app@gmail.com</strong>.</p>
@@ -57,6 +57,7 @@ a { color: #FFC24A; }
     <li><strong>Les adresses de tes bandes (« Nos adresses »)</strong> : les lieux « Déjà faits » sont retrouvés à partir de vos sorties passées, rien de plus n'est gardé. Pour un lieu ajouté « À tester », on garde son nom, son adresse, son type, son quartier et sa position, la bande, et qui l'a ajouté et quand. Seuls les membres de cette bande le voient. Jamais une adresse privée.</li>
     <li><strong>Ton avis « Tu y retournerais ? »</strong> après une sortie où tu étais : oui ou non, et 3 mots au plus choisis dans une liste. Il est anonyme : la bande ne voit que des totaux, jamais qui a répondu quoi. Tu peux l'effacer à tout moment.</li>
     <li><strong>Tes signalements et blocages</strong>, pour la modération.</li>
+    <li><strong>L'adresse IP et l'heure</strong> de tes connexions et de chaque message ou photo publié : gardées 1 an, comme la loi l'impose aux hébergeurs (décret n° 2021-1362), et communiquées seulement à la justice sur réquisition.</li>
     <li><strong>Si tu réponds sans l'app</strong> (page d'invitation à une sortie) : ton prénom et ta réponse, visibles par la bande qui t'invite.</li>
     <li><strong>Les +1 d'une sortie</strong> : une personne hors de la bande, invitée par un membre, voit pour cette sortie seulement le prénom et la photo de profil de ceux qui viennent, leur « En route » et leur « Je suis là » (jamais leur position), leurs messages rapides de la soirée, et l'album de cette soirée. La bande voit son prénom, sa photo de profil, sa réponse, ses messages rapides et les photos ajoutées par cette personne, rien d'autre de son compte.</li>
   </ul>
@@ -113,6 +114,7 @@ a { color: #FFC24A; }
     <tr><td>Trace technique de l'envoi d'une photo « vue une fois » (compte, date et heure)</td><td>1 an</td></tr>
     <tr><td>Copie d'un contenu signalé</td><td>Le temps de l'examen ; pour une photo « vue une fois » retirée, 6 mois au plus</td></tr>
     <tr><td>Signalements traités, journal de modération</td><td>1 an</td></tr>
+    <tr><td>Adresse IP et heure des connexions et des publications</td><td>1 an (décret n° 2021-1362), communiquées seulement à la justice sur réquisition</td></tr>
     <tr><td>Adresse « À tester »</td><td>Jusqu'à ce qu'elle soit retirée, ou effacée avec la bande</td></tr>
     <tr><td>Avis « Tu y retournerais ? »</td><td>Jusqu'à ce que tu l'effaces ; effacé avec la sortie ou ton compte</td></tr>
     <tr><td>Compte supprimé : identifiant, e-mail et dates</td><td>Mis à l'écart 1 an (obligation légale d'un hébergeur), puis effacé</td></tr>
@@ -120,8 +122,8 @@ a { color: #FFC24A; }
   <p>Une donnée effacée peut rester quelques jours dans les sauvegardes techniques de la base, puis elle disparaît. Les photos ne sont pas dans ces sauvegardes.</p>
 
   <h2>Où sont les données</h2>
-  <p>Hébergées <strong>en Europe</strong> (Supabase, région Paris), avec des règles d'accès vérifiées par le serveur pour chaque lecture et chaque écriture. Services utilisés : Apple (cartes, recherche de lieux et fiches des lieux d'Apple Plans, temps de trajet, notifications, « Continuer avec Apple »), GitHub Pages pour les pages d'invitation. Pour une notification, Apple reçoit seulement son texte et l'adresse technique du téléphone.</p>
-  <p>Certains prestataires sont établis aux États-Unis (Supabase, Apple, GitHub) : les éventuels transferts de données hors de l'Union européenne sont encadrés par le cadre de protection des données UE–États-Unis ou par les clauses contractuelles types de la Commission européenne. En ouvrant une page d'invitation, GitHub voit ton adresse IP, comme tout hébergeur de site.</p>
+  <p>Hébergées <strong>en Europe</strong> (Supabase, région Paris), avec des règles d'accès vérifiées par le serveur pour chaque lecture et chaque écriture. Services utilisés : <strong>Apple Plans</strong> (cartes, recherche de lieux, fiches des lieux, temps de trajet), qu'Apple fournit sous sa propre responsabilité ; <strong>Apple</strong>, pour notre compte, pour les notifications et « Continuer avec Apple » (pour une notification, Apple reçoit seulement son texte et l'adresse technique du téléphone) ; <strong>Cloudflare</strong>, qui affiche l'outil de modération de notre équipe (les signalements et les contenus signalés y passent) ; <strong>GitHub</strong>, pour les pages d'invitation (GitHub Pages) et les copies de sauvegarde de la base (GitHub Actions).</p>
+  <p>Certains prestataires sont établis aux États-Unis (Supabase, Apple, Cloudflare, GitHub) : les éventuels transferts de données hors de l'Union européenne sont encadrés par le cadre de protection des données UE–États-Unis ou par les clauses contractuelles types de la Commission européenne. En ouvrant une page d'invitation, GitHub voit ton adresse IP, comme tout hébergeur de site.</p>
 
   <h2>Cookies</h2>
   <p><strong>Aucun cookie, aucun traceur publicitaire ou de mesure d'audience</strong>, ni dans l'app ni sur les pages d'invitation. La page de réponse à une sortie retient seulement, dans ton navigateur, ton prénom (pour le préremplir la prochaine fois) et un code tiré au hasard, qui ne dit rien de toi : il sert à ce que deux personnes du même prénom ne s'écrasent pas.</p>
