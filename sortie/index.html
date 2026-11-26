@@ -111,7 +111,7 @@ h2 { margin: 28px 0 12px; font-size: 21px; font-weight: 800; }
   <div id="ko" class="hide err-page">
     <p class="kicker">Oups</p>
     <h1 class="d">Cette sortie n'existe plus</h1>
-    <p class="detail">Elle a peut-être été annulée. Demande un nouveau lien à celui qui l'a proposée.</p>
+    <p class="detail">Elle a peut-être été annulée. Demande un nouveau lien à la personne qui l'a proposée.</p>
   </div>
 </main>
 <p class="heberge">Pages hébergées par GitHub Pages : GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis. Contact : <a href="https://support.github.com/contact">support.github.com/contact</a>.</p>
@@ -176,7 +176,7 @@ function render() {
     $("place").classList.remove("hide");
     $("pname").textContent = o.place.name + (o.place.ville ? ` · ${o.place.ville}` : "");
     $("paddr").textContent = o.place.address
-      || (plusInfo ? "L'adresse s'affiche quand tu as répondu « Je viens »." : `L'adresse sera donnée par ${o.place.donnee_par || o.host || "l'organisateur"}.`);
+      || (plusInfo ? "L'adresse s'affiche quand tu as répondu « Je viens »." : `L'adresse sera donnée par ${o.place.donnee_par || o.host || "la personne qui organise"}.`);
     const ok = o.place.lat != null && o.place.lng != null;
     $("route").classList.toggle("hide", !ok);
     // Aux coordonnées, jamais par le nom (« Chez Karim » n'est pas un lieu à chercher)
